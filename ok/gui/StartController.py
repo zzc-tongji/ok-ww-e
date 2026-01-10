@@ -33,43 +33,8 @@ class StartController(QObject):
             communicate.starting_emulator.emit(True, self.tr(str(e)), 0)
             return
 
-        device = og.device_manager.get_preferred_device()
-
-        if device and not device['connected'] and device.get('full_path'):
-            if device['device'] == "windows" and not is_admin():
-                communicate.starting_emulator.emit(True,
-                                                   "PC version requires admin privileges, Please restart this app with admin privileges!",
-                                                   0)
-                communicate.restart_admin.emit()
-                return
-            path = og.device_manager.get_exe_path(device)
-            if path:
-                logger.info(f"starting game {path}")
-                if not execute(path):
-                    communicate.starting_emulator.emit(True, self.tr("Start game failed, please start game first"), 0)
-                    return
-                wait_until = time.time() + self.start_timeout
-                while not self.exit_event.is_set():
-                    og.device_manager.do_refresh(True)
-                    error = self.check_device_error()
-                    if error is None:
-                        break
-                    logger.error(f'waiting for game to start error {error}')
-                    remaining_time = wait_until - time.time()
-                    if remaining_time <= 0:
-                        communicate.starting_emulator.emit(True, self.tr('Start game timeout!'), 0)
-                        return
-                    communicate.starting_emulator.emit(False, None, int(remaining_time))
-                    time.sleep(2)
-            else:
-                communicate.starting_emulator.emit(True,
-                                                   self.tr('Game path does not exist, Please open game manually!'), 0)
-                return
-        else:
-            error = self.check_device_error()
-            if error:
-                communicate.starting_emulator.emit(True, error, 0)
-                return
+        if not self.start_device():
+            return
 
         if isinstance(task, int):
             task = og.executor.onetime_tasks[task]
@@ -83,6 +48,48 @@ class StartController(QObject):
 
         og.executor.start()
         communicate.starting_emulator.emit(True, None, 0)
+
+    def start_device(self):
+        device = og.device_manager.get_preferred_device()
+        logger.info(f'start_device: {device}')
+
+        if device and not device['connected'] and device.get('full_path'):
+            if device['device'] == "windows" and not is_admin():
+                communicate.starting_emulator.emit(True,
+                                                   "PC version requires admin privileges, Please restart this app with admin privileges!",
+                                                   0)
+                communicate.restart_admin.emit()
+                return False
+            path = og.device_manager.get_exe_path(device)
+            if path:
+                logger.info(f"starting game {path}")
+                if not execute(path):
+                    communicate.starting_emulator.emit(True, self.tr("Start game failed, please start game first"), 0)
+                    return False
+                wait_until = time.time() + self.start_timeout
+                while not self.exit_event.is_set():
+                    og.device_manager.do_refresh(True)
+                    error = self.check_device_error()
+                    if error is None:
+                        break
+                    logger.error(f'waiting for game to start error {error}')
+                    remaining_time = wait_until - time.time()
+                    if remaining_time <= 0:
+                        communicate.starting_emulator.emit(True, self.tr('Start game timeout!'), 0)
+                        return False
+                    communicate.starting_emulator.emit(False, None, int(remaining_time))
+                    time.sleep(2)
+            else:
+                communicate.starting_emulator.emit(True,
+                                                   self.tr('Game path does not exist, Please open game manually!'), 0)
+                return False
+        else:
+            error = self.check_device_error()
+            if error:
+                communicate.starting_emulator.emit(True, error, 0)
+                return False
+        communicate.starting_emulator.emit(True, None, 0)
+        return True
 
     def check_resolution(self):
         error = None
@@ -117,7 +124,7 @@ class StartController(QObject):
             device = og.device_manager.get_preferred_device()
             error_msg = self.tr("{} is not connected, please select the game window.").format(
                 device['nick'])
-            logger.debug(f'test check_device_error msg: {error_msg}', )
+            logger.debug(f'test check_device_error msg: {error_msg}')
             if not device:
                 return self.tr('No game selected!')
             if og.device_manager.capture_method is None:
