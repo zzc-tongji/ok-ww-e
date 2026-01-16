@@ -212,7 +212,7 @@ class DailyTask2(TacetTask2, ForgeryTask2, SimulationTask2):
         total_points = int(self.ocr(0.19, 0.8, 0.30, 0.93, match=number_re)[0].name)
         self.info_set('daily points', total_points)
         if total_points < 100:
-            self.log_error("Can't complete daily task, may need to increase stamina manually!", notify=True)
+            self.log_error("每日活跃度任务未完成（可能因为体力不足），需要手动登陆游戏处理。", notify=True)
         else:
             self.click(0.89, 0.85, after_sleep=1)
         self.ensure_main(time_out=5)
