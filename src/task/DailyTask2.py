@@ -57,10 +57,10 @@ class DailyTask2(TacetTask2, ForgeryTask2, SimulationTask2):
         self.teleport_timeout = self.config.get('Teleport Timeout', 10)
         try:
             #
-            current_task = 'login'
+            current_task = 'login_with_hot_update'
             self.info_set('current task', current_task)
             WWOneTimeTask.run(self)
-            self.ensure_main(time_out=self.teleport_timeout)
+            self.ensure_main(time_out=600)  # for hot update if needed
             #
             current_task = 'claim_mail'
             self.info_set('current task', current_task)
@@ -147,17 +147,18 @@ class DailyTask2(TacetTask2, ForgeryTask2, SimulationTask2):
             self.claim_battle_pass()
             #
         except Exception as e:
+            self.log_error(f'一条龙错误 | {current_task} | {str(e)}\n{''.join(traceback.format_exception(e))}')
+            self.screenshot(f'{datetime.now().strftime("%Y%m%d")}_DailyTask2_Error')
+            #
             try:
                 self.make_sure_in_world()
-                current_task = 'claim_daily'
+                current_task = 'claim_daily_when_exception_catched'
                 self.info_set('current task', current_task)
                 self.ensure_main(time_out=self.teleport_timeout)
                 self.claim_daily()
             except:
                 pass
             #
-            self.log_error(f'一条龙错误 | {current_task} | {str(e)}\n{''.join(traceback.format_exception(e))}')
-            self.screenshot(f'{datetime.now().strftime("%Y%m%d")}_DailyTask2_Error')
             if not self.config.get('Exit with Error', True):
                 raise e
 
