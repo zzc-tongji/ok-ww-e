@@ -19,7 +19,7 @@ class TacetTask(WWOneTimeTask, BaseCombatTask):
         default_config = {
             'Which Tacet Suppression to Farm': 1,  # starts with 1
         }
-        self.total_number = 14
+        self.total_number = 16
         self.target_enemy_time_out = 10
         default_config.update(self.default_config)
         self.config_description = {
@@ -31,9 +31,11 @@ class TacetTask(WWOneTimeTask, BaseCombatTask):
             1: [],
             2: [],
             3: [],
-            4: [["a", 0.3]],
-            5: [["d", 0.6]],
-            6: [["a", 1.5], ["w", 3], ["a", 2.5]],
+            4: [],
+            5: [],
+            6: [["a", 0.3]],
+            7: [["d", 0.6]],
+            8: [["a", 1.5], ["w", 3], ["a", 2.5]],
         }
         self.stamina_once = 60
 
@@ -73,7 +75,10 @@ class TacetTask(WWOneTimeTask, BaseCombatTask):
                     self.sleep(method[1])
                     self.send_key_up(method[0])
                     self.sleep(0.05)
-                self.run_until(self.in_combat, 'w', time_out=10, running=True)
+                in_combat = self.run_until(self.in_combat, 'w', time_out=10, running=True,
+                                           target=False, post_walk=1)
+                if not in_combat:
+                    raise Exception('Tacet can not walk to combat')
             else:
                 self.walk_until_f(time_out=4, backward_time=0, raise_if_not_found=True)
                 self.pick_f(handle_claim=False)

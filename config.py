@@ -6,7 +6,7 @@ import numpy as np
 from ok import ConfigOption
 from src.task.process_feature import process_feature
 
-version = "v3.0.26.0"
+version = "v3.1.57.0"
 
 
 def calculate_pc_exe_path(running_path):
@@ -60,6 +60,7 @@ key_config_option = ConfigOption('Game Hotkey Config', {
 
 char_config_option = ConfigOption('Character Config', {
     'Iuno C6': False,
+    'Chisa DPS': False,
 }, description='Character Config')
 
 pick_echo_config_option = ConfigOption('Pick Echo Config', {
@@ -93,7 +94,7 @@ config = {
     'wait_until_settle_time': 0,
     # required if using feature detection
     'template_matching': {
-        'coco_feature_json': os.path.join('assets', 'result.json'),
+        'coco_feature_json': os.path.join('assets', 'coco_detection.json'),
         'default_horizontal_variance': 0.002,
         'default_vertical_variance': 0.002,
         'default_threshold': 0.8,
@@ -122,7 +123,7 @@ config = {
         'min_height': 600,
     },
     'supported_resolution': {
-        'ratio': '16:9', 
+        'ratio': '16:9',
         'resize_to': [(2560, 1440), (1920, 1080), (1600, 900), (1280, 720)],
         'min_size': (1280, 720)
     },
@@ -174,11 +175,12 @@ config = {
         ["src.task.NightmareNestTask", "NightmareNestTask"],
         ["src.task.SimulationTask", "SimulationTask"],
         ["src.task.TacetTask", "TacetTask"],
+        ["src.task.EnhanceEchoTask", "EnhanceEchoTask"],
+        ["src.task.ChangeEchoTask", "ChangeEchoTask"],
         ["src.task.DiagnosisTask", "DiagnosisTask"],
     ], 'trigger_tasks': [
         ["src.task.AutoCombatTask", "AutoCombatTask"],
         ["src.task.AutoPickTask", "AutoPickTask"],
-        ["src.task.AutoEnhanceEchoTask", "AutoEnhanceEchoTask"],
         ["src.task.SkipDialogTask", "AutoDialogTask"],
         ["src.task.AutoLoginTask", "AutoLoginTask"],
         ["src.task.MouseResetTask", "MouseResetTask"],

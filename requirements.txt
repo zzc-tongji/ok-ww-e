@@ -6,7 +6,7 @@
 #
     # via -r .\requirements.in
 playwright==1.57.0
-onnxocr-ppocrv4==0.0.5
+onnxocr-ppocrv5==0.0.9
     # via -r .\requirements.in
 pyappify==1.0.2
 certifi==2025.7.14
@@ -17,10 +17,6 @@ comtypes==1.4.11
     # via pycaw
 darkdetect==0.8.0
     # via pyside6-fluent-widgets
-gitdb==4.0.12
-    # via gitpython
-gitpython==3.1.44
-    # via -r .\requirements.in
 idna==3.10
     # via requests
 numpy==2.2.6
@@ -31,7 +27,7 @@ numpy==2.2.6
 
 opencv-python==4.12.0.88
     # via -r .\requirements.in
-openvino==2025.2.0
+openvino==2026.0.0
     # via -r .\requirements.in
 openvino-telemetry==2025.2.0
     # via openvino
@@ -69,8 +65,6 @@ shiboken6==6.9.1
     #   pyside6
     #   pyside6-addons
     #   pyside6-essentials
-smmap==5.0.2
-    # via gitdb
 typing-extensions==4.14.1
 urllib3==2.5.0
     # via requests

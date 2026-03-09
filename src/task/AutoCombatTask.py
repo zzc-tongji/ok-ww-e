@@ -1,3 +1,5 @@
+import time
+
 from qfluentwidgets import FluentIcon
 
 from ok import TriggerTask, Logger
@@ -17,7 +19,6 @@ class AutoCombatTask(BaseCombatTask, TriggerTask):
         self.description = "Enable auto combat in Abyss, Game World etc"
         self.icon = FluentIcon.CALORIES
         self.last_is_click = False
-        self.scene: WWScene | None = None
         self.default_config.update({
             'Auto Target': True,
             'Use Liberation': True,
@@ -37,6 +38,7 @@ class AutoCombatTask(BaseCombatTask, TriggerTask):
         self.use_liberation = self.config.get('Use Liberation')
         if not self.use_liberation and not self.in_world():  # 仅大世界生效
             self.use_liberation = True
+        combat_start = time.time()
         while self.in_combat():
             ret = True
             try:
@@ -45,7 +47,7 @@ class AutoCombatTask(BaseCombatTask, TriggerTask):
                 self.log_error(f'Characters dead', notify=True)
                 break
             except NotInCombatException as e:
-                logger.info(f'auto_combat_task_out_of_combat {e}')
+                logger.info(f'auto_combat_task_out_of_combat {int(time.time() - combat_start)} {e}')
                 break
         if ret:
             self.combat_end()

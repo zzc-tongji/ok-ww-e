@@ -47,7 +47,6 @@ class MainWindow(MSFluentWindow):
         communicate.restart_admin.connect(self.restart_admin)
         if config.get('show_update_copyright'):
             communicate.copyright.connect(self.show_update_copyright)
-        qconfig.themeChanged.disconnect(self._updateBackgroundColor)
 
         self.addSubInterface(self.start_tab, FluentIcon.PLAY, self.tr('Capture'))
 
@@ -98,6 +97,10 @@ class MainWindow(MSFluentWindow):
             from ok.gui.debug.DebugTab import DebugTab
             debug_tab = DebugTab(config, exit_event)
             self.addSubInterface(debug_tab, FluentIcon.DEVELOPER_TOOLS, self.tr('Debug'),
+                                 position=NavigationItemPosition.BOTTOM)
+            from ok.gui.debug.RunCodeTab import RunCodeTab
+            run_code_tab = RunCodeTab(config, exit_event)
+            self.addSubInterface(run_code_tab, FluentIcon.COMMAND_PROMPT, self.tr('Run Code'),
                                  position=NavigationItemPosition.BOTTOM)
 
         from ok.gui.about.AboutTab import AboutTab
@@ -160,9 +163,6 @@ class MainWindow(MSFluentWindow):
             self.showNormal()
             self.raise_()
             self.activateWindow()
-
-    def _onThemeChangedFinished(self):
-        pass
 
     def goto_global_config(self, key):
         self.switchTo(self.setting_tab)
@@ -333,9 +333,9 @@ class MainWindow(MSFluentWindow):
                 self.hide()
                 return
             if not self.do_not_quit:
-                pyappify.kill_pyappify()
                 self.exit_event.set()
-                self.executor.destory()
+                self.executor.destroy()
             event.accept()
             if not self.do_not_quit:
+                pyappify.kill_pyappify()
                 QApplication.instance().exit()

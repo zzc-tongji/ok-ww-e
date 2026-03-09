@@ -9,9 +9,12 @@ from ok import BaseTask, Logger, find_boxes_by_name, og, find_color_rectangles, 
 from ok import CannotFindException
 import cv2
 
+from src.Labels import Labels
+from src.scene.WWScene import WWScene
+
 logger = Logger.get_logger(__name__)
-number_re = re.compile(r'^(\d+)$')
-stamina_re = re.compile(r'^(\d+)/(\d+)$')
+number_re = re.compile(r'(\d+)')
+stamina_re = re.compile(r'(\d+)/(\d+)')
 f_white_color = {
     'r': (235, 255),  # Red range
     'g': (235, 255),  # Green range
@@ -31,6 +34,7 @@ class BaseWWTask(BaseTask):
         self.key_config = self.get_global_config('Game Hotkey Config')  # 游戏热键配置
         self.next_monthly_card_start = 0
         self._logged_in = False
+        self.scene: WWScene | None = None
 
     def is_open_world_auto_combat(self):
         from src.task.AutoCombatTask import AutoCombatTask
@@ -102,7 +106,7 @@ class BaseWWTask(BaseTask):
         return f_search_box
 
     def find_f_with_text(self, target_text=None):
-        f = self.find_one('pick_up_f_hcenter_vcenter', box=self.f_search_box, threshold=0.8)
+        f = self.find_one(Labels.pick_up_f_hcenter_vcenter, box=self.f_search_box, threshold=0.8)
         if not f:
             return None
         if not target_text:
@@ -396,16 +400,13 @@ class BaseWWTask(BaseTask):
         if (not boxes) or (len(boxes) == 0):
             self.screenshot('stamina_not_found')
             return -1, -1, -1
-        current_box = find_boxes_by_name(boxes, stamina_re)
-        if current_box:
-            current = int(current_box[0].name.split('/')[0])
-        else:
-            current = 0
-        back_up_box = find_boxes_by_name(boxes, number_re)
-        if back_up_box:
-            back_up = int(back_up_box[0].name)
-        else:
-            back_up = 0
+        current = 0
+        back_up = 0
+        for box in boxes:
+            if match := stamina_re.search(box.name):
+                current = int(match.group(1))
+            elif match := number_re.search(box.name):
+                back_up = int(match.group(1))
         self.info_set('current_stamina', current)
         self.info_set('back_up_stamina', back_up)
         return current, back_up, current + back_up
@@ -471,7 +472,8 @@ class BaseWWTask(BaseTask):
                 return False
         return f_found
 
-    def run_until(self, condiction, direction, time_out, raise_if_not_found=False, running=False):
+    def run_until(self, condiction, direction, time_out, raise_if_not_found=False, running=False, target=False,
+                  post_walk=0):
         if time_out <= 0:
             return
         self.send_key_down(direction)
@@ -479,13 +481,23 @@ class BaseWWTask(BaseTask):
             self.sleep(0.1)
             logger.debug(f'run_until condiction {condiction} direction {direction}')
             self.mouse_down(key='right')
-        result = self.wait_until(condiction, time_out=time_out,
-                                 raise_if_not_found=raise_if_not_found)
+        start = time.time()
+        result = None
+        while time.time() - start < time_out:
+            if result := condiction():
+                break
+            if target:
+                self.middle_click(interval=0.5)
+            self.sleep(0.02)
+        if result and post_walk:
+            self.sleep(post_walk)
         self.send_key_up(direction)
         if running:
             self.sleep(0.1)
             self.mouse_up(key='right')
 
+        if raise_if_not_found and not result:
+            raise Exception('wait condition failed while walking')
         return result
 
     def is_moving(self):
@@ -568,17 +580,17 @@ class BaseWWTask(BaseTask):
             if not self.handle_claim_button():
                 self.log_debug('found a echo picked')
                 return True
-    
+
     def is_pick_f(self):
         f = self.find_one('pick_up_f_hcenter_vcenter', box=self.f_search_box,
-                              threshold=0.8)
+                          threshold=0.8)
         if not f:
             return False
         dialog_search = f.copy(x_offset=f.width * 3, width_offset=f.width * 2, height_offset=f.height * 2,
-                                   y_offset=-f.height,
-                                   name='search_dialog')
+                               y_offset=-f.height,
+                               name='search_dialog')
         dialog_3_dots = self.find_feature('dialog_3_dots', box=dialog_search,
-                                              threshold=0.6)
+                                          threshold=0.6)
         return bool(dialog_3_dots)
 
     def walk_to_treasure(self, send_f=True, raise_if_not_found=True):
@@ -661,8 +673,11 @@ class BaseWWTask(BaseTask):
 
     def ensure_main(self, esc=True, time_out=30):
         self.info_set('current task', f'wait main esc={esc}')
+        if not self._logged_in:
+            time_out = 180
         if not self.wait_until(lambda: self.is_main(esc=esc), time_out=time_out, raise_if_not_found=False):
             raise Exception('Please start in game world and in team!')
+        self.sleep(0.5)
         self.info_set('current task', f'in main esc={esc}')
 
     def is_main(self, esc=True):
@@ -674,7 +689,7 @@ class BaseWWTask(BaseTask):
         if self.wait_login():
             return True
         if esc:
-            self.back(after_sleep=1.5)
+            self.back(after_sleep=2)
 
     def wait_login(self):
         if not self._logged_in:
@@ -691,10 +706,11 @@ class BaseWWTask(BaseTask):
                 return True
             texts = self.ocr()
             if login := self.find_boxes(texts, boundary=self.box_of_screen(0.3, 0.3, 0.7, 0.7), match="登录"):
-                self.click(login)
-                self.log_info('点击登录按钮!')
+                if not self.find_boxes(texts, match="+86"):
+                    self.click(login)
+                    self.log_info('点击登录按钮!')
                 return False
-            if self.find_boxes(texts, match=re.compile("游戏即将重启")):                
+            if self.find_boxes(texts, match=re.compile("游戏即将重启")):
                 self.log_info('游戏更新成功, 游戏即将重启')
                 self.click(self.find_boxes(texts, match="确认"), after_sleep=30)
                 result = self.start_device()
@@ -903,17 +919,20 @@ class BaseWWTask(BaseTask):
     def openF2Book(self, feature="gray_book_all_monsters", opened=False):
         if not opened:
             self.log_info('click f2 to open the book')
-            self.send_key_down('alt')
-            self.sleep(0.05)
-            self.click_relative(0.77, 0.05)
-            self.sleep(0.02)
-            self.send_key_up('alt')
-            self.sleep(1)
-        if self.in_team_and_world():
-            self.send_key('f2', after_sleep=1)
-            self.log_info('send f2 key to open the book')
+            if self.in_team_and_world():
+                self.log_info('send mouse key to open the book')
+                self.send_key_down('alt')
+                self.sleep(0.05)
+                self.click_relative(0.77, 0.05)
+                self.sleep(0.02)
+                self.send_key_up('alt')
+                self.sleep(3)
+            if self.in_team_and_world():
+                self.send_key('f2', after_sleep=3)
+                self.log_info('send f2 key to open the book failed, use f2')
+
         gray_book_boss = self.wait_book(feature)
-        self.sleep(0.5)
+        self.sleep(0.8)
         if not gray_book_boss:
             self.log_error("can't find gray_book_boss, make sure f2 is the hotkey for book", notify=True)
             raise Exception("can't find gray_book_boss, make sure f2 is the hotkey for book")
@@ -921,8 +940,9 @@ class BaseWWTask(BaseTask):
 
     def click_traval_button(self):
         for feature_name in ['fast_travel_custom', 'gray_teleport', 'remove_custom']:
-            if feature := self.find_one(feature_name, threshold=0.7):
+            if self.find_one(feature_name, threshold=0.7):
                 self.sleep(0.5)
+                feature = self.find_one(feature_name, threshold=0.7)
                 self.click(feature, after_sleep=1)
                 if feature.name == 'fast_travel_custom':
                     if confirm := self.wait_feature(
@@ -944,7 +964,7 @@ class BaseWWTask(BaseTask):
 
     def wait_book(self, feature="gray_book_all_monsters", time_out=3):
         gray_book_boss = self.wait_until(
-            lambda: self.find_one(feature, vertical_variance=0.8, horizontal_variance=0.05,
+            lambda: self.find_one(feature, box='box_gray_book',
                                   threshold=0.3),
             time_out=time_out, settle_time=1)
         logger.info(f'found gray_book_boss {gray_book_boss}')
@@ -1051,7 +1071,7 @@ def calculate_angle_clockwise(box1, box2):
 
 
 lower_white = np.array([244, 244, 244], dtype=np.uint8)
-lower_white_none_inclusive = np.array([243, 243, 243], dtype=np.uint8)
+lower_white_none_inclusive = np.array([240, 240, 240], dtype=np.uint8)
 upper_white = np.array([255, 255, 255], dtype=np.uint8)
 black = np.array([0, 0, 0], dtype=np.uint8)
 

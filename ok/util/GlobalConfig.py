@@ -13,11 +13,13 @@ basic_options = ConfigOption('Basic Options', {
     'Use DirectML': 'Yes',
     'Trigger Interval': 1,
     'Start/Stop': 'F9',
-    'Kill Launcher after Start': False
+    'Kill Launcher after Start': False,
+    'Launch with DX11': False
 }, config_type={'Use DirectML': {'type': "drop_down", 'options': ['Auto', 'Yes', 'No']},
                 'Start/Stop': {'type': "drop_down", 'options': ['None', 'F9', 'F10', 'F11', 'F12']}}
                              , config_description={'Use DirectML': 'Use GPU to Improve Performance',
                                                    'Start/Stop': 'HotKey',
+                                                   'Windows Capture': 'Switch between different Windows capture methods',
                                                    'Trigger Interval': 'Increase Delay between Trigger Tasks to Reduce CPU/GPU Usage(Milliseconds)'},
                              icon=FluentIcon.GAME)
 
