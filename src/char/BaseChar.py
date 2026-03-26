@@ -186,6 +186,7 @@ class BaseChar:
 
     def click(self, *args: Any, **kwargs: Any):
         """执行一次点击操作 (代理到 task.click)。"""
+        kwargs['down_time'] = 0.01
         self.task.click(*args, **kwargs)
 
     def do_perform(self):
@@ -705,6 +706,9 @@ class BaseChar:
         """
         return self.task.find_mouse_forte()
 
+    def is_e_forte_full(self):
+        return self.task.find_e_forte()
+
     def is_forte_full(self):
         """判断共鸣回路是否已充满/可用。
 
@@ -890,7 +894,14 @@ class BaseChar:
         return False
 
     def switch_other_char(self):
-        next_char = str((self.index + 1) % len(self.task.chars) + 1)
+        from src.char.Healer import Healer
+        target_index = (self.index + 1) % len(self.task.chars)
+        for char in self.task.chars:
+            if char and isinstance(char, Healer) and char.index != self.index:
+                target_index = char.index
+                break
+        next_char = str(target_index + 1)
+
         from src.task.AutoCombatTask import AutoCombatTask
         if isinstance(self.task, AutoCombatTask):
             self.logger.debug('AutoCombatTask, skip switch_other_char')
@@ -898,9 +909,11 @@ class BaseChar:
         self.logger.debug(f'{self.char_name} on_combat_end {self.index} switch next char: {next_char}')
         start = time.time()
         while time.time() - start < 6:
-            self.task.load_chars()
-            current_char = self.task.get_current_char(raise_exception=False)
-            if current_char and current_char.name != self.name:
+            in_team, current_index, count = self.task.in_team()
+            if in_team and current_index != self.index:
+                for char in self.task.chars:
+                    if char:
+                        char.is_current_char = (char.index == current_index)
                 break
             else:
                 self.task.send_key(next_char)
