@@ -7,7 +7,7 @@ import numpy as np
 from ok import ConfigOption
 from src.task.process_feature import process_feature
 
-version = "v3.2.10.0"
+version = "v3.3.8.0"
 
 
 def calculate_pc_exe_path(running_path):
@@ -108,7 +108,9 @@ config = {
     },
     'windows': {  # required  when supporting windows game
         'top_hwnd_class': [re.compile('CAgreementDlg'), re.compile('CLoginDlg_P_'),
-                           'Chrome_RenderWidgetHostHWND', re.compile('CNativeLoginDlg'), 'ComboLBox', '#32770'],
+                           'CefBrowserWindow', 'Chrome_RenderWidgetHostHWND',
+                           re.compile('CNativeLoginDlg'), 'ComboLBox', '#32770'
+                           ],
         'calculate_pc_exe_path': calculate_pc_exe_path,
         'exe': 'Client-Win64-Shipping.exe',
         'hwnd_class': 'UnrealWindow',
