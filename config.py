@@ -7,7 +7,7 @@ import numpy as np
 from ok import ConfigOption
 from src.task.process_feature import process_feature
 
-version = "v3.3.8.1"
+version = "v3.3.13.0"
 
 
 def calculate_pc_exe_path(running_path):
