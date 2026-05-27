@@ -23,7 +23,7 @@ from ok.gui.Communicate import communicate
 from ok.gui.MainWindow import MainWindow
 from ok.task.TaskExecutor import TaskExecutor
 from ok.util.Analytics import Analytics
-from ok.util.GlobalConfig import GlobalConfig, basic_options
+from ok.util.GlobalConfig import GlobalConfig, register_basic_options
 from ok.util.clazz import init_class_by_name
 from ok.util.config import Config, ConfigOption
 from ok.util.handler import Handler, ExitEvent
@@ -75,7 +75,8 @@ class App:
         from ok.gui.util.app import init_app_config
         self.app, self.locale = init_app_config()
         self.ok_config = Config('_ok', {'window_x': -1, 'window_y': -1, 'window_width': -1, 'window_height': -1,
-                                        'window_maximized': False, 'use_overlay': False, 'show_overlay_logs': True})
+                                        'window_maximized': False, 'navigation_expanded': True,
+                                        'use_overlay': False, 'show_overlay_logs': True})
         communicate.quit.connect(self.app.quit)
 
         self.about = self.config.get('about')
@@ -108,10 +109,6 @@ class App:
         else:
             self.to_translate = None
             
-        if self.ok_config.get('use_overlay', False):
-            logger.debug('init overlay')
-            from ok.gui.overlay.OverlayWindow import OverlayWindow
-            self.overlay_window = OverlayWindow(og.device_manager.hwnd_window)
         self.po_translation = None
         if not config.get('window_size'):
             logger.info(f'no config.window_size was set use default')
@@ -128,6 +125,8 @@ class App:
 
         if my_app := self.config.get('my_app'):
             og.my_app = init_class_by_name(my_app[0], my_app[1], exit_event)
+            if not hasattr(og.my_app, 'get_overlay_view'):
+                og.my_app.get_overlay_view = self.get_overlay_view
 
         if self.config.get('analytics'):
             self.fire_base_analytics = Analytics(self.config, self.exit_event, og.handler, og.device_manager)
@@ -188,15 +187,24 @@ class App:
         self.show_message_window(title, content)
 
     def update_overlay(self, visible, x, y, window_width, window_height, width, height, scaling):
+        overlay_view = self.get_overlay_view()
+        if overlay_view:
+            overlay_view.update_overlay(visible, x, y, window_width, window_height, width, height, scaling)
 
-        self.overlay_window.update_overlay(visible, x, y, window_width, window_height, width, height, scaling)
+    def get_overlay_view(self):
+        """Return the overlay widget exposed to tasks, custom tabs, and my_app."""
+        if self.overlay_window is None:
+            from ok.gui.overlay.OverlayWindow import OverlayWindow
+            self.overlay_window = OverlayWindow(og.device_manager.hwnd_window)
+            communicate.window.connect(self.overlay_window.update_overlay)
+            self.overlay_window.set_boxes_enabled(self.ok_config.get('use_overlay', False))
+        return self.overlay_window
 
     def show_main_window(self):
         self.do_show_main()
 
     def do_show_main(self):
-        if self.overlay_window:
-            communicate.window.connect(self.overlay_window.update_overlay)
+        self.get_overlay_view()
 
         self.main_window = MainWindow(self, self.config, self.ok_config, self.icon, self.title, self.version,
                                       self.debug,
@@ -262,6 +270,8 @@ class HeadlessApp:
         og.app = self
         if my_app := self.config.get('my_app'):
             og.my_app = init_class_by_name(my_app[0], my_app[1], exit_event)
+            if not hasattr(og.my_app, 'get_overlay_view'):
+                og.my_app.get_overlay_view = self.get_overlay_view
         logger.debug('init headless app end')
 
     def tr(self, key):
@@ -287,6 +297,9 @@ class HeadlessApp:
     def quit(self):
         if self.exit_event:
             self.exit_event.set()
+
+    def get_overlay_view(self):
+        return None
 
 
 def get_my_id():
@@ -329,7 +342,8 @@ class OK:
     init_error = None
 
     def __init__(self, config):
-        check_mutex()
+        if config.get('check_mutex', True):
+            check_mutex()
         og.ok = self
         if pyappify.app_version:
             config['version'] = pyappify.app_version
@@ -363,7 +377,7 @@ class OK:
                 else:
                     available_methods.append(method)
 
-        self.global_config.get_config(basic_options)
+        register_basic_options(self.global_config, enable_blur=callable(config.get('blur_area')))
         og.global_config = self.global_config
         og.set_use_dml()
         try:
@@ -397,15 +411,16 @@ class OK:
         return self._headless_app
 
     def should_init_task_manager_headless(self):
-        return not self.config.get("use_gui") or self.args.get('task', 0) > 0
+        return not self.config.get("use_gui") or self.args.get('headless', False)
 
     def start(self):
         logger.info(f'OK start id:{id(self)} pid:{os.getpid()}')
         try:
-            if self.args.get('task', 0) > 0:
-                self.run_task(self.args.get('task'))
+            use_gui = self.config.get("use_gui") and not self.args.get('headless', False)
+            if not use_gui and self.args.get('task', 0) > 0:
+                self.run_task(self.args.get('task'), exit_after=self.args.get('exit', False))
                 return
-            if self.config.get("use_gui"):
+            if use_gui:
                 if not self.init_error:
                     self.app.show_main_window()
                 logger.debug('start app.exec()')
@@ -442,21 +457,22 @@ class OK:
             if self._app or self._headless_app:
                 self.quit()
 
-    def run_task(self, task=1):
+    def run_task(self, task=1, exit_after=False):
         """
         Run a task without showing the main UI.
 
         Args:
             task: 1-based one-time task index, task name, task class, or task instance.
+            exit_after: exit the game and app after a successful one-time task.
         """
         task, is_trigger_task = self.get_task(task)
         if is_trigger_task:
             return self.run_trigger_task(task)
-        return self.run_onetime_task(task)
+        return self.run_onetime_task(task, exit_after=exit_after)
 
-    def run_onetime_task(self, task):
+    def run_onetime_task(self, task, exit_after=False):
         logger.info(f'run one-time task without ui: {task.name}')
-        started = self.headless_app.start_controller.do_start(task, exit_after=True)
+        started = self.headless_app.start_controller.do_start(task, exit_after=exit_after)
         if not started:
             raise RuntimeError(f'Start task failed: {task.name}')
         self.wait_task(task)
@@ -687,7 +703,7 @@ class OK:
             og.device_manager = self.device_manager
 
 
-def run_task(config, task=1, debug=False):
+def run_task(config, task=1, debug=False, exit_after=False):
     """
     Convenience entrypoint for scripts that only need to run one task.
 
@@ -705,7 +721,7 @@ def run_task(config, task=1, debug=False):
         headless_config["trigger_tasks"] = [[task.__module__, task.__name__]]
     elif isinstance(task, TriggerTask):
         headless_config["trigger_tasks"] = [[task.__class__.__module__, task.__class__.__name__]]
-    return OK(headless_config).run_task(task)
+    return OK(headless_config).run_task(task, exit_after=exit_after)
 
 
 class BaseScene:
@@ -753,6 +769,11 @@ class OkGlobals:
             use_dml = window_build_number >= 18362
         logger.info(f'use_dml result is {use_dml}')
         self.use_dml = use_dml
+
+    def get_overlay_view(self):
+        if self.app and hasattr(self.app, 'get_overlay_view'):
+            return self.app.get_overlay_view()
+        return None
 
     def get_trial_expire_util_str(self):
         # Convert the timestamp to a datetime object

@@ -410,6 +410,18 @@
             <source>Cancel</source>
             <translation>取消</translation>
         </message>
+        <message>
+            <source>Available Options</source>
+            <translation>可用選項</translation>
+        </message>
+        <message>
+            <source>Selected Options</source>
+            <translation>已選選項</translation>
+        </message>
+        <message>
+            <source>Click an option to add it.</source>
+            <translation>點擊選項以新增。</translation>
+        </message>
     </context>
     <context>
         <name>ModifyListItem</name>
@@ -742,6 +754,14 @@
             <source>Can't start game, make sure the game is installed</source>
             <translation>無法啟動遊戲，請確認遊戲已安裝！</translation>
         </message>
+        <message>
+            <source>{vendor} {feature} is enabled and may cause malfunctions!</source>
+            <translation>{vendor} {feature} 已啟用，可能導致功能異常！</translation>
+        </message>
+        <message>
+            <source>GPU Driver Warning</source>
+            <translation>GPU 驅動警告</translation>
+        </message>
     </context>
     <context>
         <name>StartLoadingDialog</name>
@@ -797,12 +817,12 @@
             <translation>選擇互動方式</translation>
         </message>
         <message>
-            <source>Show Overlay</source>
-            <translation>顯示除錯懸浮窗</translation>
+            <source>Enable Boxes</source>
+            <translation>啟用標記框</translation>
         </message>
         <message>
-            <source>Hide Overlay</source>
-            <translation>隱藏除錯懸浮窗</translation>
+            <source>Disable Boxes</source>
+            <translation>停用標記框</translation>
         </message>
         <message>
             <source>Show Log on Overlay</source>
@@ -831,6 +851,14 @@
         <message>
             <source>Capture</source>
             <translation>截圖</translation>
+        </message>
+        <message>
+            <source>Screenshot Folder</source>
+            <translation>截圖目錄</translation>
+        </message>
+        <message>
+            <source>Log Folder</source>
+            <translation>日誌目錄</translation>
         </message>
     </context>
     <context>
@@ -909,6 +937,10 @@
         <message>
             <source>Resume</source>
             <translation>繼續</translation>
+        </message>
+        <message>
+            <source>Waiting for {task_name} task to be completed</source>
+            <translation>等待 {task_name} 任務完成</translation>
         </message>
     </context>
     <context>
@@ -1134,6 +1166,30 @@
             <translation>基本設定</translation>
         </message>
         <message>
+            <source>Enable Blur</source>
+            <translation>啟用模糊遮擋</translation>
+        </message>
+        <message>
+            <source>Blur Game UID etc to enhance OLED life</source>
+            <translation>模糊遊戲 UID 等固定內容以延長 OLED 螢幕壽命</translation>
+        </message>
+        <message>
+            <source>Blur Algorithm</source>
+            <translation>遮擋演算法</translation>
+        </message>
+        <message>
+            <source>Method used to obscure configured areas</source>
+            <translation>用於遮擋設定區域的處理方式</translation>
+        </message>
+        <message>
+            <source>Blur</source>
+            <translation>模糊</translation>
+        </message>
+        <message>
+            <source>Inpaint</source>
+            <translation>內容填補</translation>
+        </message>
+        <message>
             <source>Use DirectML</source>
             <translation>使用 DirectML</translation>
         </message>
@@ -1336,6 +1392,14 @@
         <message>
             <source>Target window inactive: Recording paused</source>
             <translation>目標窗口非激活：暫停錄製</translation>
+        </message>
+        <message>
+            <source>Blur Interval</source>
+            <translation>遮擋檢查間隔</translation>
+        </message>
+        <message>
+            <source>Seconds between processed overlay updates</source>
+            <translation>處理後遮擋層的更新間隔（秒）</translation>
         </message>
     </context>
     <context>

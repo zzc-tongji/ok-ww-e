@@ -400,6 +400,18 @@
             <source>Cancel</source>
             <translation>Cancel</translation>
         </message>
+        <message>
+            <source>Available Options</source>
+            <translation>Available Options</translation>
+        </message>
+        <message>
+            <source>Selected Options</source>
+            <translation>Selected Options</translation>
+        </message>
+        <message>
+            <source>Click an option to add it.</source>
+            <translation>Click an option to add it.</translation>
+        </message>
     </context>
     <context>
         <name>ModifyListItem</name>
@@ -744,6 +756,14 @@
             <source>Can't start game, make sure the game is installed</source>
             <translation>Can't start game, make sure the game is installed</translation>
         </message>
+        <message>
+            <source>{vendor} {feature} is enabled and may cause malfunctions!</source>
+            <translation>{vendor} {feature} is enabled and may cause malfunctions!</translation>
+        </message>
+        <message>
+            <source>GPU Driver Warning</source>
+            <translation>GPU Driver Warning</translation>
+        </message>
     </context>
     <context>
         <name>StartLoadingDialog</name>
@@ -799,12 +819,12 @@
             <translation>Choose Interaction</translation>
         </message>
         <message>
-            <source>Show Overlay</source>
-            <translation>Show Overlay</translation>
+            <source>Enable Boxes</source>
+            <translation>Enable Boxes</translation>
         </message>
         <message>
-            <source>Hide Overlay</source>
-            <translation>Hide Overlay</translation>
+            <source>Disable Boxes</source>
+            <translation>Disable Boxes</translation>
         </message>
         <message>
             <source>Show Log on Overlay</source>
@@ -837,6 +857,14 @@
         <message>
             <source>OCR</source>
             <translation>OCR</translation>
+        </message>
+        <message>
+            <source>Screenshot Folder</source>
+            <translation>Screenshot Folder</translation>
+        </message>
+        <message>
+            <source>Log Folder</source>
+            <translation>Log Folder</translation>
         </message>
     </context>
     <context>
@@ -915,6 +943,10 @@
         <message>
             <source>Resume</source>
             <translation>Resume</translation>
+        </message>
+        <message>
+            <source>Waiting for {task_name} task to be completed</source>
+            <translation>Waiting for {task_name} task to be completed</translation>
         </message>
     </context>
     <context>
@@ -1140,6 +1172,30 @@
             <translation>Basic Options</translation>
         </message>
         <message>
+            <source>Enable Blur</source>
+            <translation>Enable Blur</translation>
+        </message>
+        <message>
+            <source>Blur Game UID etc to enhance OLED life</source>
+            <translation>Blur Game UID etc to enhance OLED life</translation>
+        </message>
+        <message>
+            <source>Blur Algorithm</source>
+            <translation>Blur Algorithm</translation>
+        </message>
+        <message>
+            <source>Method used to obscure configured areas</source>
+            <translation>Method used to obscure configured areas</translation>
+        </message>
+        <message>
+            <source>Blur</source>
+            <translation>Blur</translation>
+        </message>
+        <message>
+            <source>Inpaint</source>
+            <translation>Inpaint</translation>
+        </message>
+        <message>
             <source>Use DirectML</source>
             <translation>Use DirectML</translation>
         </message>
@@ -1342,6 +1398,14 @@
         <message>
             <source>Target window inactive: Recording paused</source>
             <translation>Target window inactive: Recording paused</translation>
+        </message>
+        <message>
+            <source>Blur Interval</source>
+            <translation>Blur Interval</translation>
+        </message>
+        <message>
+            <source>Seconds between processed overlay updates</source>
+            <translation>Seconds between processed overlay updates</translation>
         </message>
     </context>
     <context>

@@ -410,6 +410,18 @@
             <source>Cancel</source>
             <translation>Cancelar</translation>
         </message>
+        <message>
+            <source>Available Options</source>
+            <translation>Opciones disponibles</translation>
+        </message>
+        <message>
+            <source>Selected Options</source>
+            <translation>Opciones seleccionadas</translation>
+        </message>
+        <message>
+            <source>Click an option to add it.</source>
+            <translation>Haz clic en una opción para añadirla.</translation>
+        </message>
     </context>
     <context>
         <name>ModifyListItem</name>
@@ -742,6 +754,14 @@
             <source>Can't start game, make sure the game is installed</source>
             <translation>No se puede iniciar el juego, asegúrate de que el juego está instalado</translation>
         </message>
+        <message>
+            <source>{vendor} {feature} is enabled and may cause malfunctions!</source>
+            <translation>¡Se ha activado {vendor} {feature} y puede causar fallos de funcionamiento!</translation>
+        </message>
+        <message>
+            <source>GPU Driver Warning</source>
+            <translation>Advertencia del controlador de GPU</translation>
+        </message>
     </context>
     <context>
         <name>StartLoadingDialog</name>
@@ -797,12 +817,12 @@
             <translation>Elegir interacción</translation>
         </message>
         <message>
-            <source>Show Overlay</source>
-            <translation>Mostrar superposición de depuración</translation>
+            <source>Enable Boxes</source>
+            <translation>Activar cuadros</translation>
         </message>
         <message>
-            <source>Hide Overlay</source>
-            <translation>Ocultar superposición de depuración</translation>
+            <source>Disable Boxes</source>
+            <translation>Desactivar cuadros</translation>
         </message>
         <message>
             <source>Show Log on Overlay</source>
@@ -835,6 +855,14 @@
         <message>
             <source>OCR</source>
             <translation>OCR</translation>
+        </message>
+        <message>
+            <source>Screenshot Folder</source>
+            <translation>Carpeta de capturas</translation>
+        </message>
+        <message>
+            <source>Log Folder</source>
+            <translation>Carpeta de registros</translation>
         </message>
     </context>
     <context>
@@ -913,6 +941,10 @@
         <message>
             <source>Resume</source>
             <translation>Reanudar</translation>
+        </message>
+        <message>
+            <source>Waiting for {task_name} task to be completed</source>
+            <translation>Esperando a que se complete la tarea {task_name}</translation>
         </message>
     </context>
     <context>
@@ -1138,6 +1170,30 @@
             <translation>Opciones básicas</translation>
         </message>
         <message>
+            <source>Enable Blur</source>
+            <translation>Activar desenfoque</translation>
+        </message>
+        <message>
+            <source>Blur Game UID etc to enhance OLED life</source>
+            <translation>Desenfoca el UID del juego y otros elementos para prolongar la vida del OLED</translation>
+        </message>
+        <message>
+            <source>Blur Algorithm</source>
+            <translation>Algoritmo de ocultación</translation>
+        </message>
+        <message>
+            <source>Method used to obscure configured areas</source>
+            <translation>Método utilizado para ocultar las áreas configuradas</translation>
+        </message>
+        <message>
+            <source>Blur</source>
+            <translation>Desenfoque</translation>
+        </message>
+        <message>
+            <source>Inpaint</source>
+            <translation>Relleno inteligente</translation>
+        </message>
+        <message>
             <source>Use DirectML</source>
             <translation>Usar DirectML</translation>
         </message>
@@ -1340,6 +1396,14 @@
         <message>
             <source>Target window inactive: Recording paused</source>
             <translation>Ventana de destino inactiva: Grabación pausada</translation>
+        </message>
+        <message>
+            <source>Blur Interval</source>
+            <translation>Intervalo de comprobacion del ocultamiento</translation>
+        </message>
+        <message>
+            <source>Seconds between processed overlay updates</source>
+            <translation>Segundos entre actualizaciones de la superposicion procesada</translation>
         </message>
     </context>
     <context>

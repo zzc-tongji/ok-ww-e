@@ -117,6 +117,12 @@ class ExecutorOperation:
     def start_device(self):
         self._app.start_controller.start_device()
 
+    def get_overlay_view(self):
+        """Return the raw shared overlay widget when running with the GUI."""
+        if hasattr(self._app, 'get_overlay_view'):
+            return self._app.get_overlay_view()
+        return None
+
     def clipboard(self):
         from ok.third_party.paperclip import paste
         return paste()
@@ -1166,6 +1172,7 @@ class BaseTask(OCR):
             self.info_clear()
             self.ensure_capture()
             self.executor.interaction.on_run()
+            self.executor.enqueue_onetime_task(self)
             logger.info(f'enabled task {self}')
         communicate.task.emit(self)
 
@@ -1283,6 +1290,7 @@ class BaseTask(OCR):
 
     def disable(self):
         self._enabled = False
+        self.executor.remove_onetime_task(self)
         communicate.task.emit(self)
 
     @property

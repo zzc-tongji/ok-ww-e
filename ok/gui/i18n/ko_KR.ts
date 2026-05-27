@@ -411,6 +411,18 @@
             <source>Cancel</source>
             <translation>취소</translation>
         </message>
+        <message>
+            <source>Available Options</source>
+            <translation>사용 가능한 옵션</translation>
+        </message>
+        <message>
+            <source>Selected Options</source>
+            <translation>선택한 옵션</translation>
+        </message>
+        <message>
+            <source>Click an option to add it.</source>
+            <translation>추가할 옵션을 클릭하세요.</translation>
+        </message>
     </context>
     <context>
         <name>ModifyListItem</name>
@@ -743,6 +755,14 @@
             <source>Can't start game, make sure the game is installed</source>
             <translation>게임을 시작할 수 없습니다. 게임이 설치되었는지 확인하세요</translation>
         </message>
+        <message>
+            <source>{vendor} {feature} is enabled and may cause malfunctions!</source>
+            <translation>{vendor} {feature} 기능이 활성화되어 있어 오작동을 일으킬 수 있습니다!</translation>
+        </message>
+        <message>
+            <source>GPU Driver Warning</source>
+            <translation>GPU 드라이버 경고</translation>
+        </message>
     </context>
     <context>
         <name>StartLoadingDialog</name>
@@ -798,12 +818,12 @@
             <translation>상호 작용 선택</translation>
         </message>
         <message>
-            <source>Show Overlay</source>
-            <translation>디버그 오버레이 표시</translation>
+            <source>Enable Boxes</source>
+            <translation>박스 사용</translation>
         </message>
         <message>
-            <source>Hide Overlay</source>
-            <translation>디버그 오버레이 숨기기</translation>
+            <source>Disable Boxes</source>
+            <translation>박스 사용 안 함</translation>
         </message>
         <message>
             <source>Show Log on Overlay</source>
@@ -836,6 +856,14 @@
         <message>
             <source>OCR</source>
             <translation>OCR</translation>
+        </message>
+        <message>
+            <source>Screenshot Folder</source>
+            <translation>스크린샷 폴더</translation>
+        </message>
+        <message>
+            <source>Log Folder</source>
+            <translation>로그 폴더</translation>
         </message>
     </context>
     <context>
@@ -914,6 +942,10 @@
         <message>
             <source>Resume</source>
             <translation>재개</translation>
+        </message>
+        <message>
+            <source>Waiting for {task_name} task to be completed</source>
+            <translation>{task_name} 작업 완료 대기 중</translation>
         </message>
     </context>
     <context>
@@ -1139,6 +1171,30 @@
             <translation>기본 옵션</translation>
         </message>
         <message>
+            <source>Enable Blur</source>
+            <translation>블러 사용</translation>
+        </message>
+        <message>
+            <source>Blur Game UID etc to enhance OLED life</source>
+            <translation>게임 UID 등을 흐리게 표시하여 OLED 수명을 늘립니다</translation>
+        </message>
+        <message>
+            <source>Blur Algorithm</source>
+            <translation>가림 알고리즘</translation>
+        </message>
+        <message>
+            <source>Method used to obscure configured areas</source>
+            <translation>설정된 영역을 가리는 처리 방법</translation>
+        </message>
+        <message>
+            <source>Blur</source>
+            <translation>블러</translation>
+        </message>
+        <message>
+            <source>Inpaint</source>
+            <translation>인페인트</translation>
+        </message>
+        <message>
             <source>Use DirectML</source>
             <translation>DirectML 사용</translation>
         </message>
@@ -1341,6 +1397,14 @@
         <message>
             <source>Target window inactive: Recording paused</source>
             <translation>대상 창 비활성: 녹화 일시 정지됨</translation>
+        </message>
+        <message>
+            <source>Blur Interval</source>
+            <translation>가림 확인 간격</translation>
+        </message>
+        <message>
+            <source>Seconds between processed overlay updates</source>
+            <translation>처리된 오버레이 업데이트 간격(초)</translation>
         </message>
     </context>
     <context>

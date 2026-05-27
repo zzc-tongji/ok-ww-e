@@ -410,6 +410,18 @@
             <source>Cancel</source>
             <translation>キャンセル</translation>
         </message>
+        <message>
+            <source>Available Options</source>
+            <translation>利用可能なオプション</translation>
+        </message>
+        <message>
+            <source>Selected Options</source>
+            <translation>選択したオプション</translation>
+        </message>
+        <message>
+            <source>Click an option to add it.</source>
+            <translation>オプションをクリックして追加します。</translation>
+        </message>
     </context>
     <context>
         <name>ModifyListItem</name>
@@ -742,6 +754,14 @@
             <source>Can't start game, make sure the game is installed</source>
             <translation>ゲームを開始できません。ゲームがインストールされていることを確認してください。</translation>
         </message>
+        <message>
+            <source>{vendor} {feature} is enabled and may cause malfunctions!</source>
+            <translation>{vendor} {feature} が有効になっており、誤動作の原因になる可能性があります！</translation>
+        </message>
+        <message>
+            <source>GPU Driver Warning</source>
+            <translation>GPU ドライバー警告</translation>
+        </message>
     </context>
     <context>
         <name>StartLoadingDialog</name>
@@ -793,12 +813,12 @@
             <translation>操作方法の選択</translation>
         </message>
         <message>
-            <source>Show Overlay</source>
-            <translation>デバッグオーバーレイを表示</translation>
+            <source>Enable Boxes</source>
+            <translation>ボックスを有効化</translation>
         </message>
         <message>
-            <source>Hide Overlay</source>
-            <translation>デバッグオーバーレイを隠す</translation>
+            <source>Disable Boxes</source>
+            <translation>ボックスを無効化</translation>
         </message>
         <message>
             <source>Show Log on Overlay</source>
@@ -827,6 +847,14 @@
         <message>
             <source>Capture</source>
             <translation>キャプチャ</translation>
+        </message>
+        <message>
+            <source>Screenshot Folder</source>
+            <translation>スクリーンショットフォルダー</translation>
+        </message>
+        <message>
+            <source>Log Folder</source>
+            <translation>ログフォルダー</translation>
         </message>
     </context>
     <context>
@@ -905,6 +933,10 @@
         <message>
             <source>Resume</source>
             <translation>再開</translation>
+        </message>
+        <message>
+            <source>Waiting for {task_name} task to be completed</source>
+            <translation>{task_name} タスクの完了を待機中</translation>
         </message>
     </context>
     <context>
@@ -1130,6 +1162,30 @@
             <translation>基本オプション</translation>
         </message>
         <message>
+            <source>Enable Blur</source>
+            <translation>ぼかしを有効化</translation>
+        </message>
+        <message>
+            <source>Blur Game UID etc to enhance OLED life</source>
+            <translation>ゲーム UID などをぼかして OLED の寿命を延ばします</translation>
+        </message>
+        <message>
+            <source>Blur Algorithm</source>
+            <translation>マスク処理方式</translation>
+        </message>
+        <message>
+            <source>Method used to obscure configured areas</source>
+            <translation>設定領域を隠すための処理方式</translation>
+        </message>
+        <message>
+            <source>Blur</source>
+            <translation>ぼかし</translation>
+        </message>
+        <message>
+            <source>Inpaint</source>
+            <translation>インペイント</translation>
+        </message>
+        <message>
             <source>Use DirectML</source>
             <translation>DirectMLを使用</translation>
         </message>
@@ -1332,6 +1388,14 @@
         <message>
             <source>Target window inactive: Recording paused</source>
             <translation>対象ウィンドウで非アクティブ: 録画を一時停止しました</translation>
+        </message>
+        <message>
+            <source>Blur Interval</source>
+            <translation>遮蔽チェック間隔</translation>
+        </message>
+        <message>
+            <source>Seconds between processed overlay updates</source>
+            <translation>処理済みオーバーレイの更新間隔（秒）</translation>
         </message>
     </context>
     <context>
