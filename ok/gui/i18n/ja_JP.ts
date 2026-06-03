@@ -37,6 +37,14 @@
             <source>Other Projects</source>
             <translation>関連プロジェクト</translation>
         </message>
+        <message>
+            <source>Update success {from_version} -&gt; {to_version}</source>
+            <translation>アップデート成功 {from_version} -&gt; {to_version}</translation>
+        </message>
+        <message>
+            <source>Downgrade success {from_version} -&gt; {to_version}</source>
+            <translation>ダウングレード成功 {from_version} -&gt; {to_version}</translation>
+        </message>
     </context>
     <context>
         <name>ActWindow</name>
@@ -198,13 +206,6 @@
         </message>
     </context>
     <context>
-        <name>DownloadBar</name>
-        <message>
-            <source>Installing {progress} {percent}%</source>
-            <translation>インストール中 {progress} {percent}%</translation>
-        </message>
-    </context>
-    <context>
         <name>GlobalConfigCard</name>
         <message>
             <source>Reset Config</source>
@@ -284,6 +285,50 @@
         <message>
             <source>Close</source>
             <translation>閉じる</translation>
+        </message>
+        <message>
+            <source>Open Logs</source>
+            <translation>ログを開く</translation>
+        </message>
+        <message>
+            <source>All Levels</source>
+            <translation>全レベル</translation>
+        </message>
+        <message>
+            <source>Filter logs...</source>
+            <translation>ログをフィルター...</translation>
+        </message>
+        <message>
+            <source>Clear</source>
+            <translation>クリア</translation>
+        </message>
+        <message>
+            <source>Waiting for ok-script.log</source>
+            <translation>ok-script.log を待機中</translation>
+        </message>
+        <message>
+            <source>records</source>
+            <translation>件</translation>
+        </message>
+        <message>
+            <source>Pause</source>
+            <translation>一時停止</translation>
+        </message>
+        <message>
+            <source>Resume</source>
+            <translation>再開</translation>
+        </message>
+        <message>
+            <source>View Log</source>
+            <translation>ログを表示</translation>
+        </message>
+        <message>
+            <source>Pin</source>
+            <translation>固定</translation>
+        </message>
+        <message>
+            <source>Unpin</source>
+            <translation>固定解除</translation>
         </message>
     </context>
     <context>
@@ -459,29 +504,6 @@
             <source>app</source>
             <comment>Error</comment>
             <translation>エラー</translation>
-        </message>
-    </context>
-    <context>
-        <name>RunBar</name>
-        <message>
-            <source> Current Version: </source>
-            <translation> 現在のバージョン: </translation>
-        </message>
-        <message>
-            <source>Launcher </source>
-            <translation>ランチャー </translation>
-        </message>
-        <message>
-            <source>Choose Profile:</source>
-            <translation>プロファイルを選択:</translation>
-        </message>
-        <message>
-            <source>Start</source>
-            <translation>開始</translation>
-        </message>
-        <message>
-            <source>Download Dependencies and Start</source>
-            <translation>依存関係をダウンロードして開始</translation>
         </message>
     </context>
     <context>
@@ -856,6 +878,14 @@
             <source>Log Folder</source>
             <translation>ログフォルダー</translation>
         </message>
+        <message>
+            <source>Open Logs</source>
+            <translation>ログを開く</translation>
+        </message>
+        <message>
+            <source>View Log</source>
+            <translation>ログを表示</translation>
+        </message>
     </context>
     <context>
         <name>TaskButtons</name>
@@ -979,57 +1009,6 @@
         <message>
             <source>Time Elapsed</source>
             <translation>経過時間</translation>
-        </message>
-    </context>
-    <context>
-        <name>UpdateBar</name>
-        <message>
-            <source>Current Version: </source>
-            <translation>現在のバージョン: </translation>
-        </message>
-        <message>
-            <source>Checking for Updates...</source>
-            <translation>アップデートを確認中...</translation>
-        </message>
-        <message>
-            <source>Delete Downloaded Dependencies</source>
-            <translation>ダウンロードした依存関係を削除</translation>
-        </message>
-        <message>
-            <source>Update Source:</source>
-            <translation>更新ソース:</translation>
-        </message>
-        <message>
-            <source>Check for Update</source>
-            <translation>アップデートを確認</translation>
-        </message>
-        <message>
-            <source>Current Version:</source>
-            <translation>現在のバージョン:</translation>
-        </message>
-        <message>
-            <source>TargetVersion:</source>
-            <translation>ターゲットバージョン:</translation>
-        </message>
-        <message>
-            <source>Update</source>
-            <translation>アップデート</translation>
-        </message>
-        <message>
-            <source>This is the newest version</source>
-            <translation>これは最新バージョンです</translation>
-        </message>
-        <message>
-            <source>Checking for Update...</source>
-            <translation>アップデートを確認中...</translation>
-        </message>
-        <message>
-            <source>Updating</source>
-            <translation>更新中</translation>
-        </message>
-        <message>
-            <source>Downgrade</source>
-            <translation>ダウングレード</translation>
         </message>
     </context>
     <context>
@@ -2629,6 +2608,36 @@
         <message>
             <source>NPU inferring Error, you might need to update the Intel NPU driver!</source>
             <translation>NPU推論エラー。Intel NPUドライバーを更新する必要があるかもしれません。</translation>
+        </message>
+    </context>
+    <context>
+        <name>GlobalConfigTab</name>
+        <message>
+            <source>Reset Config</source>
+            <translation>設定をリセット</translation>
+        </message>
+    </context>
+    <context>
+        <name>LabelAndFileSelector</name>
+        <message>
+            <source>Browse</source>
+            <translation>参照</translation>
+        </message>
+        <message>
+            <source>Select File</source>
+            <translation>ファイルを選択</translation>
+        </message>
+        <message>
+            <source>Select Folder</source>
+            <translation>フォルダーを選択</translation>
+        </message>
+        <message>
+            <source>All Files (*)</source>
+            <translation>すべてのファイル (*)</translation>
+        </message>
+        <message>
+            <source>Select File or Folder</source>
+            <translation>ファイルまたはフォルダーを選択</translation>
         </message>
     </context>
 </TS>

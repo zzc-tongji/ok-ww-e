@@ -29,6 +29,7 @@ from ok.util.config import Config
 
 from ok.gui.Communicate import communicate
 from ok.gui.util.Alert import alert_error
+from ok.gui.util.pyappify_startup import get_startup_version_change
 from ok.gui.widget.StartLoadingDialog import StartLoadingDialog
 from ok.util.GlobalConfig import basic_options
 from ok.util.clazz import init_class_by_name
@@ -87,6 +88,7 @@ class MainWindow(FluentWindow):
         self.first_task_tab = None
         self.grouped_task_tabs = []
         self.schedule_tab = None
+        self.global_config_tabs = []
 
         # Prepare custom tabs and separate them by add_after_default_tabs
         before_custom_tabs = []
@@ -102,7 +104,7 @@ class MainWindow(FluentWindow):
 
         # Add custom tabs that should appear before built-in task tabs
         for tab_obj in before_custom_tabs:
-            self.addSubInterface(tab_obj, tab_obj.icon, tab_obj.name, position=tab_obj.position)
+            self.addSubInterface(tab_obj, tab_obj.icon, self.app.tr(tab_obj.name), position=tab_obj.position)
 
         from ok import og
         self.imported_tabs = {}  # {file_name: tab_object}
@@ -148,7 +150,7 @@ class MainWindow(FluentWindow):
 
         # Add custom tabs that should appear after built-in task tabs
         for tab_obj in after_custom_tabs:
-            self.addSubInterface(tab_obj, tab_obj.icon, tab_obj.name, position=tab_obj.position)
+            self.addSubInterface(tab_obj, tab_obj.icon, self.app.tr(tab_obj.name), position=tab_obj.position)
         if debug:
             from ok.gui.debug.DebugTab import DebugTab
             debug_tab = DebugTab(config, exit_event)
@@ -179,8 +181,16 @@ class MainWindow(FluentWindow):
             from ok.gui.tasks.ScheduleTaskTab import ScheduleTaskTab
             self.schedule_tab = ScheduleTaskTab(config=self.config)
             self.addSubInterface(self.schedule_tab, FluentIcon.CALENDAR, self.tr('Schedule'))
+
+        for name, config_obj, option in global_config.get_all_visible_configs():
+            if getattr(option, 'show_at_tab', False):
+                from ok.gui.settings.GlobalConfigTab import GlobalConfigTab
+                config_tab = GlobalConfigTab(config_obj, option)
+                self.global_config_tabs.append(config_tab)
+                self.addSubInterface(config_tab, option.icon or FluentIcon.INFO, self.app.tr(option.name))
+
         from ok.gui.about.AboutTab import AboutTab
-        self.about_tab = AboutTab(config, self.app.updater)
+        self.about_tab = AboutTab(config)
         self.addSubInterface(self.about_tab, FluentIcon.QUESTION, self.tr('About'),
                              position=NavigationItemPosition.BOTTOM)
 
@@ -196,7 +206,6 @@ class MainWindow(FluentWindow):
         communicate.executor_paused.connect(self.executor_paused)
         communicate.tab.connect(self.navigate_tab)
         communicate.task_done.connect(self.activateWindow)
-        communicate.must_update.connect(self.must_update)
         menu = QMenu()
         exit_action = menu.addAction(self.tr("Exit"))
         exit_action.triggered.connect(self.tray_quit)
@@ -308,32 +317,16 @@ class MainWindow(FluentWindow):
                 logger.debug(f'bring_to_front native activation failed: {e}')
 
     def goto_global_config(self, key):
+        for config_tab in self.global_config_tabs:
+            if config_tab.has_key(key):
+                self.switchTo(config_tab)
+                return
         self.switchTo(self.setting_tab)
         self.setting_tab.goto_config(key)
 
     def tray_quit(self):
         logger.info('main window tray_quit')
         self.app.quit()
-
-    def must_update(self):
-        logger.info('must_update show_window')
-        title = self.tr('Update')
-        content = QCoreApplication.translate('app', 'The current version {} must be updated').format(
-            self.app.updater.starting_version)
-        w = MessageBox(title, content, self.window())
-        self.executor.pause()
-        if w.exec():
-            logger.info('Yes button is pressed')
-            self.app.updater.run()
-        else:
-            logger.info('No button is pressed')
-            self.app.quit()
-
-    def show_ok(self):
-        title = self.tr('Update')
-        content = QCoreApplication.translate('app', 'The current version {} must be updated').format(
-            self.app.updater.starting_version)
-        w = MessageBox(title, content, self.window())
 
     def show_update_copyright(self):
         title = self.tr('Info')
@@ -344,6 +337,14 @@ class MainWindow(FluentWindow):
         w.cancelButton.setVisible(False)
         w.setContentCopyable(True)
         w.exec()
+        self.switchTo(self.about_tab)
+
+    def show_startup_version_change_notice(self):
+        version_change = get_startup_version_change()
+        if not version_change:
+            return
+
+        logger.info(f'show startup version change on about tab {version_change.title}')
         self.switchTo(self.about_tab)
 
     def showEvent(self, event):
@@ -360,11 +361,14 @@ class MainWindow(FluentWindow):
             if self.basic_global_config.get('Kill Launcher after Start'):
                 logger.info(f'MainWindow showEvent Kill Launcher after Start')
                 pyappify.kill_pyappify()
+            startup_version_change = get_startup_version_change()
             if self.version != self.main_window_config.get('last_version'):
                 self.main_window_config['last_version'] = self.version
-                if not self.config.get('auth'):
+                if not self.config.get('auth') and not startup_version_change:
                     logger.info('update success, show copyright')
                     self.handler.post(lambda: communicate.copyright.emit(), delay=1)
+                elif startup_version_change:
+                    logger.info('skip copyright dialog because startup version change is shown on about tab')
             if args.get('task') > 0:
                 task_index = args.get('task') - 1
                 logger.info(f'start with params {task_index} {args.get("exit")}')
@@ -376,6 +380,7 @@ class MainWindow(FluentWindow):
         super().showEvent(event)
         if first_show:
             QTimer.singleShot(0, self.bring_to_front)
+            QTimer.singleShot(250, self.show_startup_version_change_notice)
 
     def set_window_size(self, width, height, min_width, min_height):
         screen = QScreen.availableGeometry(self.screen())

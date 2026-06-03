@@ -37,6 +37,14 @@
             <source>Other Projects</source>
             <translation>相关项目</translation>
         </message>
+        <message>
+            <source>Update success {from_version} -&gt; {to_version}</source>
+            <translation>更新成功 {from_version} -&gt; {to_version}</translation>
+        </message>
+        <message>
+            <source>Downgrade success {from_version} -&gt; {to_version}</source>
+            <translation>降级成功 {from_version} -&gt; {to_version}</translation>
+        </message>
     </context>
     <context>
         <name>ActWindow</name>
@@ -189,13 +197,6 @@
         </message>
     </context>
     <context>
-        <name>DownloadBar</name>
-        <message>
-            <source>Installing {progress} {percent}%</source>
-            <translation>安装中 {progress} {percent}%</translation>
-        </message>
-    </context>
-    <context>
         <name>GlobalConfigCard</name>
         <message>
             <source>Reset Config</source>
@@ -275,6 +276,50 @@
         <message>
             <source>Close</source>
             <translation>关闭</translation>
+        </message>
+        <message>
+            <source>Open Logs</source>
+            <translation>打开日志</translation>
+        </message>
+        <message>
+            <source>All Levels</source>
+            <translation>全部级别</translation>
+        </message>
+        <message>
+            <source>Filter logs...</source>
+            <translation>过滤日志...</translation>
+        </message>
+        <message>
+            <source>Clear</source>
+            <translation>清空</translation>
+        </message>
+        <message>
+            <source>Waiting for ok-script.log</source>
+            <translation>等待 ok-script.log</translation>
+        </message>
+        <message>
+            <source>records</source>
+            <translation>条</translation>
+        </message>
+        <message>
+            <source>Pause</source>
+            <translation>暂停</translation>
+        </message>
+        <message>
+            <source>Resume</source>
+            <translation>继续</translation>
+        </message>
+        <message>
+            <source>View Log</source>
+            <translation>查看日志</translation>
+        </message>
+        <message>
+            <source>Pin</source>
+            <translation>置顶</translation>
+        </message>
+        <message>
+            <source>Unpin</source>
+            <translation>取消置顶</translation>
         </message>
     </context>
     <context>
@@ -461,29 +506,6 @@
             <source>app</source>
             <comment>Error</comment>
             <translation>错误</translation>
-        </message>
-    </context>
-    <context>
-        <name>RunBar</name>
-        <message>
-            <source> Current Version: </source>
-            <translation> 当前版本:</translation>
-        </message>
-        <message>
-            <source>Launcher </source>
-            <translation>启动器</translation>
-        </message>
-        <message>
-            <source>Choose Profile:</source>
-            <translation>选择版本:</translation>
-        </message>
-        <message>
-            <source>Start</source>
-            <translation>启动</translation>
-        </message>
-        <message>
-            <source>Download Dependencies and Start</source>
-            <translation>下载依赖并启动</translation>
         </message>
     </context>
     <context>
@@ -862,6 +884,14 @@
             <source>Log Folder</source>
             <translation>日志目录</translation>
         </message>
+        <message>
+            <source>Open Logs</source>
+            <translation>打开日志</translation>
+        </message>
+        <message>
+            <source>View Log</source>
+            <translation>查看日志</translation>
+        </message>
     </context>
     <context>
         <name>TaskButtons</name>
@@ -985,57 +1015,6 @@
         <message>
             <source>Time Elapsed</source>
             <translation>已运行</translation>
-        </message>
-    </context>
-    <context>
-        <name>UpdateBar</name>
-        <message>
-            <source>Current Version: </source>
-            <translation>当前版本</translation>
-        </message>
-        <message>
-            <source>Checking for Updates...</source>
-            <translation>检查更新中...</translation>
-        </message>
-        <message>
-            <source>Delete Downloaded Dependencies</source>
-            <translation>删除已下载依赖</translation>
-        </message>
-        <message>
-            <source>Update Source:</source>
-            <translation>更新源:</translation>
-        </message>
-        <message>
-            <source>Check for Update</source>
-            <translation>检查更新</translation>
-        </message>
-        <message>
-            <source>Current Version:</source>
-            <translation>当前版本</translation>
-        </message>
-        <message>
-            <source>TargetVersion:</source>
-            <translation>目标版本</translation>
-        </message>
-        <message>
-            <source>Update</source>
-            <translation>更新版本</translation>
-        </message>
-        <message>
-            <source>This is the newest version</source>
-            <translation>已经是最新版本</translation>
-        </message>
-        <message>
-            <source>Checking for Update...</source>
-            <translation>检查更新中</translation>
-        </message>
-        <message>
-            <source>Updating</source>
-            <translation>更新中</translation>
-        </message>
-        <message>
-            <source>Downgrade</source>
-            <translation>降级版本</translation>
         </message>
     </context>
     <context>
@@ -2635,6 +2614,36 @@
         <message>
             <source>NPU inferring Error, you might need to update the Intel NPU driver!</source>
             <translation>NPU推理错误，您可能需要更新Intel NPU驱动！</translation>
+        </message>
+    </context>
+    <context>
+        <name>GlobalConfigTab</name>
+        <message>
+            <source>Reset Config</source>
+            <translation>重置配置</translation>
+        </message>
+    </context>
+    <context>
+        <name>LabelAndFileSelector</name>
+        <message>
+            <source>Browse</source>
+            <translation>浏览</translation>
+        </message>
+        <message>
+            <source>Select File</source>
+            <translation>选择文件</translation>
+        </message>
+        <message>
+            <source>Select Folder</source>
+            <translation>选择文件夹</translation>
+        </message>
+        <message>
+            <source>All Files (*)</source>
+            <translation>所有文件 (*)</translation>
+        </message>
+        <message>
+            <source>Select File or Folder</source>
+            <translation>选择文件或文件夹</translation>
         </message>
     </context>
 </TS>
