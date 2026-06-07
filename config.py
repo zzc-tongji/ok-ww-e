@@ -9,7 +9,7 @@ from qfluentwidgets import FluentIcon
 from ok import Box, ConfigOption
 from src.task.process_feature import process_feature
 
-version = "v3.3.80-rc.1"
+version = "v3.3.80-rc.2"
 
 
 def calculate_pc_exe_path(running_path):
@@ -109,21 +109,8 @@ config = {
     ]},
     'links': {
         'default': {
-            'github': 'https://github.com/ok-oldking/ok-wuthering-waves',
-            'discord': 'https://discord.gg/vVyCatEBgA',
-            'sponsor': 'https://patreon.com/ok_oldking',
-            'share': 'Download OK-WW from https://github.com/ok-oldking/ok-wuthering-waves/releases/latest',
-            'faq': 'https://github.com/ok-oldking/ok-wuthering-waves/blob/master/README_en.md'
-        },
-        'zh_CN': {
-            'github': 'https://github.com/ok-oldking/ok-wuthering-waves',
-            'discord': 'https://discord.gg/vVyCatEBgA',
-            'sponsor': 'https://afdian.com/a/ok-oldking',
-            'share': 'GitHub: https://github.com/ok-oldking 百度网盘: https://pan.baidu.com/s/102Mh1djq2B1T-cIJhct9Gg?pwd=okww 夸克网盘: https://pan.quark.cn/s/418018ddf7a0 Mirror酱：https://mirrorchyan.com/zh/projects?source=okbilibili',
-            'faq': 'https://cnb.cool/ok-oldking/ok-wuthering-waves/-/blob/main/README.md',
-            'qq_group': 'https://qm.qq.com/q/8B7ymbaBR6',
-            'qq_channel': 'https://pd.qq.com/s/djmm6l44y',
-        },
+            'github': 'https://github.com/zzc-tongji/ok-ww-enhanced'
+        }
     },
     'about': """
     <p style="color:orange;">
