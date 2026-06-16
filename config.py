@@ -9,7 +9,7 @@ from qfluentwidgets import FluentIcon
 from ok import Box, ConfigOption
 from src.task.process_feature import process_feature
 
-version = "v3.4.6-rc.1"
+version = "v3.4.7-rc.0"
 
 
 def calculate_pc_exe_path(running_path):
@@ -152,6 +152,7 @@ config = {
         ["src.task.TacetTask", "TacetTask"],
         ["src.task.EnhanceEchoTask", "EnhanceEchoTask"],
         ["src.task.ChangeEchoTask", "ChangeEchoTask"],
+        ["src.task.GardenTask", "GardenTask"],
         # ["src.task.DiagnosisTask", "DiagnosisTask"],
     ], 'trigger_tasks': [
         ["src.task.AutoCombatTask", "AutoCombatTask"],
