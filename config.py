@@ -1,6 +1,7 @@
 import os
 import re
 from pathlib import Path
+
 # WA: set empty PATH to resolve qfluentwidgets/PySide6 access os.environ['PATH'] issue
 if 'PATH' not in os.environ:
     os.environ['PATH'] = ""
@@ -9,7 +10,7 @@ from qfluentwidgets import FluentIcon
 from ok import Box, ConfigOption
 from src.task.process_feature import process_feature
 
-version = "v3.4.15-rc.2"
+version = "v3.4.17-rc.0"
 
 
 def calculate_pc_exe_path(running_path):
