@@ -29,7 +29,7 @@ class DailyTask(WWOneTimeTask, BaseCombatTask):
         self.default_config = {
             'Try to Farm Weekly-Limited Advanced Skill Material': False,
             'Which Weekly Boss to Teleport': 1,
-            'Boss Level': "80",
+            'Boss Level': "90",
             'Boss': 'Other',
             'Combat Wait Time': 0,
             'Echo Pickup Method': 'Walk',
@@ -46,7 +46,7 @@ class DailyTask(WWOneTimeTask, BaseCombatTask):
             'Continue Farm After Daily': False,
         }
         self.config_description = {
-            'Which Weekly Boss to Teleport': 'For Example, Denia, From Top to Bottom, Starting with 1',
+            'Which Weekly Boss to Teleport': 'From Top to Bottom, Starting with 1',
             'Boss Level': "Choose the Lowest that Drop a Echo",
             'Boss': 'Select boss profile (includes Combat Wait Time)',
             'Combat Wait Time': 'Wait time before each combat (seconds), overrides Boss profile if set',
@@ -79,6 +79,10 @@ class DailyTask(WWOneTimeTask, BaseCombatTask):
             'Boss': {
                 'type': "drop_down",
                 'options': FarmEchoTask.boss_list,
+            },
+            'Boss Level': {
+                'type': "drop_down",
+                'options': FarmEchoTask.boss_level,
             },
             'Echo Pickup Method': {
                 'type': "drop_down",
