@@ -14,6 +14,9 @@ from ok.device.capture_methods.bitblt_utils import PBYTE, composite_hwnds, get_c
 
 logger = Logger.get_logger(__name__)
 
+WGC_FRAME_WAIT_TIMEOUT = 4.0
+
+
 class WindowsGraphicsCaptureMethod(BaseWindowsCaptureMethod):
     name = "Windows Graphics Capture"
     description = "fast, most compatible, capped at 60fps"
@@ -21,7 +24,9 @@ class WindowsGraphicsCaptureMethod(BaseWindowsCaptureMethod):
     def __init__(self, hwnd_window):
         super().__init__(hwnd_window)
         self.lock = threading.RLock()
+        self.get_frame_lock = threading.Lock()
         self.frame_event = threading.Event()
+        self.frame_requested = threading.Event()
         self.last_frame_time = time.time()
         self.exit_event = hwnd_window.app_exit_event
         self.cputex = None
@@ -52,7 +57,7 @@ class WindowsGraphicsCaptureMethod(BaseWindowsCaptureMethod):
                 if self.frame_pool is not None:
                     next_frame = self.frame_pool.TryGetNextFrame()
                 # Keep close() from releasing the D3D context while the frame is mapped.
-                if next_frame is not None:
+                if next_frame is not None and self.frame_requested.is_set():
                     frame = self.convert_dx_frame(next_frame)
             except Exception as e:
                 logger.error(f"frame_arrived_callback error {e}", e)
@@ -62,6 +67,7 @@ class WindowsGraphicsCaptureMethod(BaseWindowsCaptureMethod):
                     next_frame.Close()
             if frame is not None:
                 self.last_frame = frame
+                self.frame_requested.clear()
                 self.frame_event.set()
 
     def convert_dx_frame(self, frame):
@@ -243,6 +249,8 @@ class WindowsGraphicsCaptureMethod(BaseWindowsCaptureMethod):
     def close(self):
         with self.lock:
             logger.info('destroy windows capture')
+            self.frame_requested.clear()
+            self.frame_event.set()
             if self.frame_pool is not None:
                 self.frame_pool.Close()
                 self.frame_pool = None
@@ -266,6 +274,12 @@ class WindowsGraphicsCaptureMethod(BaseWindowsCaptureMethod):
             self.capture_target_signature = None
 
     def do_get_frame(self):
+        # frame_requested and last_frame represent one in-flight request. Keep
+        # concurrent task/UI callers from consuming each other's response.
+        with self.get_frame_lock:
+            return self._do_get_frame()
+
+    def _do_get_frame(self):
 
         if self.start_or_stop():
             now = time.time()
@@ -273,23 +287,38 @@ class WindowsGraphicsCaptureMethod(BaseWindowsCaptureMethod):
                 logger.warning('no frame for 10 sec, try to restart')
                 self.close()
                 self.last_frame_time = time.time()
-                return self.do_get_frame()
+                return self._do_get_frame()
 
+            # A frame left by a request that timed out is not necessarily the
+            # latest frame anymore. Every call starts a fresh request instead of
+            # consuming such a frame.
             with self.lock:
-                frame = self.last_frame
-                self.last_frame = None  # Pop the frame instantly so we don't get stuck on it next time
+                frame = None
+                self.last_frame = None
                 self.frame_event.clear()
+                self.frame_requested.set()
 
-            start_wait = time.time()
+            deadline = time.monotonic() + WGC_FRAME_WAIT_TIMEOUT
             while frame is None:
-                timeout_duration = 1.0 - (time.time() - start_wait)
+                timeout_duration = deadline - time.monotonic()
                 if timeout_duration <= 0:
+                    # Serialize cancellation with frame_arrived_callback(). If
+                    # the callback won the race, consume that frame; otherwise
+                    # it will see the cleared request and cannot cache a late,
+                    # stale frame for the next call.
+                    with self.lock:
+                        frame = self.last_frame
+                        self.last_frame = None
+                        self.frame_event.clear()
+                        if frame is None:
+                            self.frame_requested.clear()
                     break
 
                 self.frame_event.wait(timeout_duration)
 
                 with self.lock:
                     if self.frame_pool is None:
+                        self.frame_requested.clear()
                         return None
                     frame = self.last_frame
                     self.last_frame = None  # Pop the frame

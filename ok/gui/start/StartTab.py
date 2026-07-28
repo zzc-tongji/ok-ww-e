@@ -1,19 +1,23 @@
 import os
-import subprocess
 import zipfile
 from pathlib import Path
 
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QAbstractItemView, QVBoxLayout, QHBoxLayout, QWidget, QListWidgetItem
+from PySide6.QtWidgets import QAbstractItemView, QVBoxLayout, QHBoxLayout, QWidget, QListWidgetItem, QSizePolicy
 from qfluentwidgets import ListWidget, PushButton, FluentIcon, SwitchButton, SearchLineEdit
 
 from ok.gui.Communicate import communicate
+from ok.gui.common.design_system import DesignToken
 from ok.gui.debug.DebugTab import capture
 from ok.gui.start.SelectCaptureListView import SelectCaptureListView
 from ok.gui.start.SelectInteractionListView import SelectInteractionListView
 from ok.gui.start.StartCard import StartCard
 from ok.gui.widget.Card import Card
 from ok.gui.widget.Tab import Tab
+from ok.util.explorer import open_explorer_folder, reveal_in_explorer
+from ok.util.logger import Logger
+
+logger = Logger.get_logger(__name__)
 
 
 class StartTab(Tab):
@@ -31,9 +35,13 @@ class StartTab(Tab):
         self.start_card.capture_button.clicked.connect(self.capture)
 
         horizontal_widget = QWidget()
+        horizontal_widget.setMinimumHeight(320)
+        horizontal_widget.setMaximumHeight(440)
+        horizontal_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         horizontal_layout = QHBoxLayout(horizontal_widget)
-        horizontal_layout.setContentsMargins(0, 20, 0, 20)
-        self.add_widget(horizontal_widget, 1)
+        horizontal_layout.setContentsMargins(0, 0, 0, 0)
+        horizontal_layout.setSpacing(DesignToken.SECTION_SPACING)
+        self.add_widget(horizontal_widget)
 
         self.device_search_box = None
         if not config.get('windows') or not config.get('windows').get('exe'):
@@ -65,7 +73,8 @@ class StartTab(Tab):
 
         self.debug_widget = QWidget()
         self.debug_layout = QHBoxLayout(self.debug_widget)
-        self.debug_layout.setContentsMargins(0, 20, 0, 20)
+        self.debug_layout.setContentsMargins(0, 0, 0, 0)
+        self.debug_layout.setSpacing(8)
 
         self.export_log_button = PushButton(FluentIcon.FEEDBACK, self.tr("Export Logs"))
         self.export_log_button.clicked.connect(self.export_logs)
@@ -97,7 +106,8 @@ class StartTab(Tab):
 
         self.overlay_widget = QWidget()
         self.overlay_layout = QHBoxLayout(self.overlay_widget)
-        self.overlay_layout.setContentsMargins(0, 20, 0, 20)
+        self.overlay_layout.setContentsMargins(0, 0, 0, 0)
+        self.overlay_layout.setSpacing(20)
 
         self.overlay_switch = SwitchButton()
         self.overlay_switch.setOnText(self.tr("Enable Boxes"))
@@ -113,7 +123,6 @@ class StartTab(Tab):
         self.overlay_log_switch.checkedChanged.connect(self.on_overlay_log_toggled)
         self.overlay_layout.addWidget(self.overlay_log_switch)
         self.overlay_layout.addStretch(1)
-
         self.add_card(self.tr("Debug Overlay"), self.overlay_widget)
 
         self.closed_by_finish_loading = False
@@ -160,14 +169,21 @@ class StartTab(Tab):
     @staticmethod
     def open_install_folder():
         cwd = os.getcwd()
-        subprocess.Popen(f'explorer "{cwd}"')
+        open_explorer_folder(cwd)
 
     @staticmethod
     def open_screenshot_folder():
         from ok import og
-        folder = getattr(getattr(og.ok, 'screenshot', None), 'screenshot_folder', None)
+        screenshot = getattr(og.ok, 'screenshot', None)
+        folder = getattr(screenshot, 'screenshot_folder', None)
+        configured_folder = og.ok.config.get("screenshots_folder")
+        logger.info(
+            f'open screenshot folder requested: configured={configured_folder!r}, '
+            f'initialized={folder!r}, cwd={os.getcwd()!r}'
+        )
         if folder is None:
             folder = Path.cwd() / "screenshots"
+            logger.info(f'screenshot folder was not initialized; using fallback={str(folder)!r}')
         StartTab.open_folder(folder)
 
     @staticmethod
@@ -188,9 +204,7 @@ class StartTab(Tab):
 
     @staticmethod
     def open_folder(folder):
-        folder_path = Path(folder)
-        folder_path.mkdir(parents=True, exist_ok=True)
-        subprocess.Popen(["explorer", str(folder_path)])
+        open_explorer_folder(folder)
 
     @staticmethod
     def export_logs():
@@ -213,7 +227,7 @@ class StartTab(Tab):
                         if file_path.is_file():
                             zipf.write(file_path, file_path.relative_to(Path.cwd()))
 
-            subprocess.run(["explorer", f"/select,{zip_path}"])
+            reveal_in_explorer(zip_path)
         except Exception as e:
             alert_error(f"{og.app.tr('Export failed')}: {e}", tray=True)
             from ok import Logger
@@ -238,7 +252,7 @@ class StartTab(Tab):
                     with open(result_path, 'w', encoding='utf-8') as f:
                         for box in result:
                             f.write(f"{box.name}, {box}, {box.confidence}\n")
-                subprocess.Popen(f'explorer "{folder_abs}"')
+                open_explorer_folder(folder_abs)
         except Exception as e:
             self.logger.error('debug ocr_log exception', e)
 

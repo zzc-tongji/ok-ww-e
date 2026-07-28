@@ -47,8 +47,26 @@ class OverlayWindow(OverlayWidget):
         self.custom_draw_requested.connect(self._set_custom_draw, Qt.QueuedConnection)
         self.custom_clear_requested.connect(self._clear_custom_draw, Qt.QueuedConnection)
 
-        # self.update_overlay(hwnd_window.visible, hwnd_window.x, hwnd_window.y, hwnd_window.window_width,
-        #                     hwnd_window.window_height, hwnd_window.width, hwnd_window.height, hwnd_window.scaling)
+        # The source window may already have been discovered before a lazily-created
+        # overlay is connected to future window updates. Seed it with the current
+        # state so it does not remain hidden until the source geometry changes.
+        if hwnd_window is not None:
+            get_capture_origin = getattr(hwnd_window, 'get_capture_origin', None)
+            if callable(get_capture_origin):
+                capture_x, capture_y = get_capture_origin()
+            else:
+                capture_x = getattr(hwnd_window, 'x', 0) + getattr(hwnd_window, 'real_x_offset', 0)
+                capture_y = getattr(hwnd_window, 'y', 0) + getattr(hwnd_window, 'real_y_offset', 0)
+            self.update_overlay(
+                bool(getattr(hwnd_window, 'visible', False)),
+                capture_x,
+                capture_y,
+                getattr(hwnd_window, 'window_width', 0),
+                getattr(hwnd_window, 'window_height', 0),
+                getattr(hwnd_window, 'width', 0),
+                getattr(hwnd_window, 'height', 0),
+                getattr(hwnd_window, 'scaling', 1.0) or 1.0,
+            )
 
     def update_overlay(self, visible, x, y, window_width, window_height, width, height, scaling):
         logger.debug(f'update_overlay: {visible}, {x}, {y}, {width}, {height}, {scaling}')

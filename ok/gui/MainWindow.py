@@ -2,11 +2,12 @@ import os
 import threading
 
 import pyappify
-from PySide6.QtCore import QCoreApplication, QEvent, QSize, Qt, QTimer, QThread, Signal
-from PySide6.QtGui import QScreen
+from PySide6.QtCore import QCoreApplication, QEvent, QSize, Qt, QTimer
+from PySide6.QtGui import QColor, QScreen
 from PySide6.QtWidgets import QMenu, QSystemTrayIcon, QApplication
-from qfluentwidgets import MSFluentWindow, qconfig, FluentIcon, NavigationItemPosition, MessageBox, InfoBar, \
-    InfoBarPosition, Theme, MessageBoxBase, FluentWindow, NavigationDisplayMode
+from qfluentwidgets import qconfig, FluentIcon, NavigationItemPosition, MessageBox, InfoBar, \
+    InfoBarPosition, MessageBoxBase, FluentWindow, NavigationDisplayMode, isDarkTheme, Theme
+from qfluentwidgets.components.widgets.scroll_bar import ScrollBarHandleDisplayMode
 from qfluentwidgets.common.style_sheet import updateStyleSheet
 
 _original_MessageBoxBase_keyPressEvent = MessageBoxBase.keyPressEvent
@@ -28,10 +29,12 @@ MessageBoxBase.keyPressEvent = _patched_message_box_base_keyPressEvent
 from ok.util.config import Config
 
 from ok.gui.Communicate import communicate
+from ok.gui.common.accent_color import qfluent_theme_source_color
 from ok.gui.util.Alert import alert_error
+from ok.gui.util.touch_scroll import enable_touch_scrolling
 from ok.gui.util.pyappify_startup import get_startup_version_change
 from ok.gui.widget.StartLoadingDialog import StartLoadingDialog
-from ok.util.GlobalConfig import basic_options
+from ok.util.GlobalConfig import basic_options, KILL_LAUNCHER_AFTER_START
 from ok.util.clazz import init_class_by_name
 from ok.util.process import restart_as_admin, parse_arguments_to_map
 
@@ -43,25 +46,21 @@ NAVIGATION_EXPAND_MAX_WIDTH = 240
 NAVIGATION_EXPAND_FIT_PADDING = 23
 
 
-class SystemThemeWatcher(QThread):
-    """始终监控系统主题变化的观察者"""
-    themeChanged = Signal(str)
- 
-    def run(self):
-        import darkdetect
-        # darkdetect.listener 会在系统主题变化时回调，这里转发为信号
-        try:
-            darkdetect.listener(self.themeChanged.emit)
-        except Exception as e:
-            logger.error(f"SystemThemeWatcher error: {e}")
-
-
 class MainWindow(FluentWindow):
 
     def __init__(self, app, config, ok_config, icon, title, version, debug=False, about=None, exit_event=None,
                  global_config=None, executor=None, handler=None):
         super().__init__()
+        self._theme_cooldowns = set()
         logger.info('main window __init__')
+        self._sync_system_accent_color(refresh=True)
+        qconfig.themeChanged.connect(self._on_theme_changed)
+        navigation_scroll_area = self.navigationInterface.panel.scrollArea
+        navigation_scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        enable_touch_scrolling(navigation_scroll_area)
+        navigation_scroll_area.scrollDelagate.vScrollBar.setHandleDisplayMode(
+            ScrollBarHandleDisplayMode.ALWAYS
+        )
         self.app = app
         self.executor = executor
         self.handler = handler
@@ -83,7 +82,8 @@ class MainWindow(FluentWindow):
         if config.get('show_update_copyright'):
             communicate.copyright.connect(self.show_update_copyright)
 
-        self.addSubInterface(self.start_tab, FluentIcon.PLAY, self.tr('Capture'))
+        self.addSubInterface(self.start_tab, FluentIcon.PLAY, self.tr('Capture'),
+                             position=NavigationItemPosition.SCROLL)
 
         self.first_task_tab = None
         self.grouped_task_tabs = []
@@ -117,7 +117,8 @@ class MainWindow(FluentWindow):
             self.trigger_tab = TriggerTaskTab()
             if self.first_task_tab is None:
                 self.first_task_tab = self.trigger_tab
-            self.addSubInterface(self.trigger_tab, FluentIcon.STOP_WATCH, self.tr('Triggers'))
+            self.addSubInterface(self.trigger_tab, FluentIcon.STOP_WATCH, self.tr('Triggers'),
+                                 position=NavigationItemPosition.SCROLL)
 
         if visible_onetime_tasks:
             from ok.gui.tasks.OneTimeTaskTab import OneTimeTaskTab
@@ -137,7 +138,8 @@ class MainWindow(FluentWindow):
                 if self.first_task_tab is None:
                     self.first_task_tab = self.onetime_tab
                 logger.debug(f"add default onetime_tab len {len(standalone_tasks)}")
-                self.addSubInterface(self.onetime_tab, FluentIcon.BOOK_SHELF, self.tr('Tasks'))
+                self.addSubInterface(self.onetime_tab, FluentIcon.BOOK_SHELF, self.tr('Tasks'),
+                                     position=NavigationItemPosition.SCROLL)
 
             for group_name, tasks_in_group in groups.items():
                 group_tab = OneTimeTaskTab(is_standalone=False, group_name=group_name)
@@ -145,7 +147,8 @@ class MainWindow(FluentWindow):
                 if self.first_task_tab is None:
                     self.first_task_tab = group_tab
                 logger.debug(f"add grouped_task_tabs {group_name} len {len(tasks_in_group)}")
-                self.addSubInterface(group_tab, group_icon, self.app.tr(group_name))
+                self.addSubInterface(group_tab, group_icon, self.app.tr(group_name),
+                                     position=NavigationItemPosition.SCROLL)
                 self.grouped_task_tabs.append(group_tab)
 
         # Add custom tabs that should appear after built-in task tabs
@@ -164,12 +167,14 @@ class MainWindow(FluentWindow):
         if og.task_manager.has_custom:
             from ok.gui.tasks.EditTaskTab import EditTaskTab
             self.edit_task_tab = EditTaskTab()
-            self.addSubInterface(self.edit_task_tab, FluentIcon.EDIT, self.tr('Script'))
+            self.addSubInterface(self.edit_task_tab, FluentIcon.EDIT, self.tr('Script'),
+                                 position=NavigationItemPosition.SCROLL)
 
         if og.task_manager.has_custom or debug:
             from ok.gui.tasks.TemplateTab import TemplateTab
             self.template_tab = TemplateTab(config=config)
-            self.addSubInterface(self.template_tab, FluentIcon.PHOTO, self.tr('Templates'))
+            self.addSubInterface(self.template_tab, FluentIcon.PHOTO, self.tr('Templates'),
+                                 position=NavigationItemPosition.SCROLL)
         
         # Initial load of imported tabs
         self.update_imported_tabs()
@@ -180,14 +185,16 @@ class MainWindow(FluentWindow):
         if any_support_schedule:
             from ok.gui.tasks.ScheduleTaskTab import ScheduleTaskTab
             self.schedule_tab = ScheduleTaskTab(config=self.config)
-            self.addSubInterface(self.schedule_tab, FluentIcon.CALENDAR, self.tr('Schedule'))
+            self.addSubInterface(self.schedule_tab, FluentIcon.CALENDAR, self.tr('Schedule'),
+                                 position=NavigationItemPosition.SCROLL)
 
         for name, config_obj, option in global_config.get_all_visible_configs():
             if getattr(option, 'show_at_tab', False):
                 from ok.gui.settings.GlobalConfigTab import GlobalConfigTab
                 config_tab = GlobalConfigTab(config_obj, option)
                 self.global_config_tabs.append(config_tab)
-                self.addSubInterface(config_tab, option.icon or FluentIcon.INFO, self.app.tr(option.name))
+                self.addSubInterface(config_tab, option.icon or FluentIcon.INFO, self.app.tr(option.name),
+                                     position=NavigationItemPosition.SCROLL)
 
         from ok.gui.about.AboutTab import AboutTab
         self.about_tab = AboutTab(config)
@@ -205,7 +212,6 @@ class MainWindow(FluentWindow):
 
         communicate.executor_paused.connect(self.executor_paused)
         communicate.tab.connect(self.navigate_tab)
-        communicate.task_done.connect(self.activateWindow)
         menu = QMenu()
         exit_action = menu.addAction(self.tr("Exit"))
         exit_action.triggered.connect(self.tray_quit)
@@ -217,10 +223,6 @@ class MainWindow(FluentWindow):
         self.tray.show()
         self.tray.setToolTip(title)
 
-        self.themeWatcher = SystemThemeWatcher(self)
-        self.themeWatcher.themeChanged.connect(self.on_system_theme_changed)
-        self.themeWatcher.start()
-
         self.navigationInterface.displayModeChanged.connect(self._save_navigation_state)
 
         communicate.capture_error.connect(self.capture_error)
@@ -230,6 +232,129 @@ class MainWindow(FluentWindow):
         communicate.global_config.connect(self.goto_global_config)
 
         logger.info('main window __init__ done')
+
+    @staticmethod
+    def _get_dwm_accent_color():
+        """Return the DWM accent color as a compatibility fallback."""
+        try:
+            import ctypes
+            from ctypes import wintypes
+
+            colorization_color = wintypes.DWORD()
+            opaque_blend = wintypes.BOOL()
+            result = ctypes.windll.dwmapi.DwmGetColorizationColor(
+                ctypes.byref(colorization_color), ctypes.byref(opaque_blend)
+            )
+            if result != 0:
+                return None
+
+            argb = colorization_color.value
+            return QColor((argb >> 16) & 0xff, (argb >> 8) & 0xff, argb & 0xff)
+        except (AttributeError, OSError):
+            logger.exception('Failed to read the Windows system accent color')
+            return None
+
+    def get_system_accent_color(self):
+        """Return the base Windows accent color (legacy helper)."""
+        return self._get_dwm_accent_color()
+
+    def get_system_primary_theme_color(self):
+        """Return a qfluent source color matching the Windows primary fill."""
+        dark = isDarkTheme()
+        try:
+            from ok.rotypes.Windows.UI.ViewManagement import UIColorType, get_color_value
+
+            color_type = UIColorType.AccentLight2 if dark else UIColorType.AccentDark1
+            system_color = get_color_value(color_type)
+            red, green, blue = system_color.red, system_color.green, system_color.blue
+        except (ImportError, OSError, TypeError):
+            logger.exception('Failed to read the Windows accent color palette')
+            fallback = self.get_system_accent_color()
+            if fallback is None:
+                return None
+            red, green, blue = fallback.red(), fallback.green(), fallback.blue()
+
+        red, green, blue = qfluent_theme_source_color(red, green, blue, dark)
+        return QColor(red, green, blue)
+
+    def _sync_system_accent_color(self, refresh=False):
+        color = self.get_system_primary_theme_color()
+        if color is None or color == qconfig.get(qconfig.themeColor):
+            return False
+
+        qconfig.set(qconfig.themeColor, color, save=False)
+        if refresh:
+            updateStyleSheet()
+            logger.info(f'Refresh primary button color: {color.name()}')
+        else:
+            logger.info(f'Prepare primary button color: {color.name()}')
+        return True
+
+    def _on_theme_changed(self, _theme):
+        self._sync_system_accent_color()
+
+    def _apply_system_theme_change(self):
+        """Synchronize qfluentwidgets after a native Windows theme notification."""
+        try:
+            theme_changed = False
+            if qconfig.themeMode.value == Theme.AUTO:
+                previous_theme = qconfig.theme
+                qconfig.theme = Theme.AUTO
+                theme_changed = qconfig.theme != previous_theme
+
+            accent_changed = self._sync_system_accent_color()
+            if theme_changed:
+                qconfig.themeChanged.emit(Theme.AUTO)
+            if theme_changed or accent_changed:
+                updateStyleSheet()
+
+            qconfig.themeChangedFinished.emit()
+            QTimer.singleShot(750, self._refresh_mica)
+            logger.info(
+                f'System theme synchronized: mode={qconfig.themeMode.value}, '
+                f'resolved={qconfig.theme}, accent_changed={accent_changed}'
+            )
+        finally:
+            self._theme_cooldowns.discard('system-theme')
+
+    def _refresh_mica(self):
+        """Rebuild Mica after Windows finishes replacing the system backdrop."""
+        if not self.isMicaEffectEnabled():
+            return
+
+        logger.info(f'Rebuild Mica effect: dark={isDarkTheme()}')
+        self.setMicaEffectEnabled(False)
+        self.setMicaEffectEnabled(True)
+        self.update()
+
+    def _schedule_system_theme_change(self):
+        if not hasattr(self, '_theme_cooldowns'):
+            self._theme_cooldowns = set()
+        if 'system-theme' in self._theme_cooldowns:
+            return
+        self._theme_cooldowns.add('system-theme')
+        QTimer.singleShot(250, self._apply_system_theme_change)
+
+    def nativeEvent(self, event_type, message):
+        try:
+            import ctypes
+            from ctypes import wintypes
+
+            native_message = wintypes.MSG.from_address(int(message))
+            if native_message.message == 0x0320:  # WM_DWMCOLORIZATIONCOLORCHANGED
+                logger.info('System colorization colors changed')
+                self._schedule_system_theme_change()
+            elif (
+                native_message.message == 0x001A  # WM_SETTINGCHANGE
+                and native_message.lParam
+                and ctypes.wstring_at(native_message.lParam) == "ImmersiveColorSet"
+            ):
+                logger.info('System theme changed')
+                self._schedule_system_theme_change()
+        except (OSError, TypeError, ValueError) as e:
+            logger.error('Failed to process Windows theme change', e)
+
+        return super().nativeEvent(event_type, message)
 
     def update_imported_tabs(self):
         """Update navigation tabs for imported scripts."""
@@ -266,9 +391,11 @@ class MainWindow(FluentWindow):
                     if hasattr(self, 'template_tab'):
                         # Using our custom logic or standard addSubInterface
                         # qfluentwidgets typically appends to the current section
-                        self.addSubInterface(group_tab, group_icon, self.app.tr(script_name))
+                        self.addSubInterface(group_tab, group_icon, self.app.tr(script_name),
+                                             position=NavigationItemPosition.SCROLL)
                     else:
-                        self.addSubInterface(group_tab, group_icon, self.app.tr(script_name))
+                        self.addSubInterface(group_tab, group_icon, self.app.tr(script_name),
+                                             position=NavigationItemPosition.SCROLL)
 
         self.update_navigation_width()
 
@@ -358,7 +485,7 @@ class MainWindow(FluentWindow):
                                  [update_pyappify.get('zip_url')], self.exit_event)
             logger.info(f"Window has fully displayed {args}")
             communicate.start_success.emit()
-            if self.basic_global_config.get('Kill Launcher After Start'):
+            if self.basic_global_config.get(KILL_LAUNCHER_AFTER_START):
                 logger.info(f'MainWindow showEvent Kill Launcher After Start')
                 pyappify.kill_pyappify()
             startup_version_change = get_startup_version_change()
@@ -403,7 +530,17 @@ class MainWindow(FluentWindow):
     def apply_navigation_state(self):
         self.update_navigation_width()
         if self.ok_config.get('navigation_expanded', True):
-            self.navigationInterface.expand(False)
+            self._expand_navigation_without_animation()
+
+    def _expand_navigation_without_animation(self):
+        self.navigationInterface.expand(False)
+
+        # NavigationInterface normally mirrors the panel width from its resize
+        # event.  While the window is hidden, Qt defers that event until the
+        # first show, leaving the interface at its compact width for one frame.
+        panel = self.navigationInterface.panel
+        if panel.displayMode == NavigationDisplayMode.EXPAND:
+            self.navigationInterface.setFixedWidth(panel.width())
 
     def update_navigation_width(self):
         panel = self.navigationInterface.panel
@@ -420,7 +557,7 @@ class MainWindow(FluentWindow):
         self.navigationInterface.setExpandWidth(width)
 
         if panel.displayMode in (NavigationDisplayMode.EXPAND, NavigationDisplayMode.MENU):
-            self.navigationInterface.expand(False)
+            self._expand_navigation_without_animation()
 
     def _save_navigation_state(self, display_mode):
         self.ok_config['navigation_expanded'] = display_mode in (
@@ -531,35 +668,9 @@ class MainWindow(FluentWindow):
                 except Exception as e:
                     logger.error(f'Error importing .okscript file: {e}')
 
-    def on_system_theme_changed(self, system_theme):
-        """Handle system theme change signal."""
-        # 保存新主题名并极速触发更新，以减少背景闪烁时间
-        self._new_system_theme = system_theme
-        QTimer.singleShot(20, self._do_theme_update)
-
-    def _do_theme_update(self):
-        # 根据观察者传回的实时数据快速确定目标颜色
-        new_theme = Theme.DARK if self._new_system_theme.lower() == "dark" else Theme.LIGHT
-        
-        if qconfig.themeMode.value == Theme.AUTO:
-            # 自动模式：同步更新 resolved theme、相关信号和样式表
-            if new_theme != qconfig.theme:
-                qconfig.theme = new_theme
-                qconfig._cfg.themeChanged.emit(Theme.AUTO)
-                updateStyleSheet()
-        
-        # 核心：无论何种模式，只要系统变了，就立刻重申窗口背景属性（Mica）
-        # 缩短延迟后，这一步会更快地覆盖系统的默认行为
-        qconfig.themeChangedFinished.emit()
-        logger.info(f"System theme shift handled quickly (Mode: {qconfig.themeMode.value})")
-
     def closeEvent(self, event):
         if self.app.exit_event.is_set():
             logger.info("Window closed exit_event.is_set")
-            if hasattr(self, 'themeWatcher'):
-                self.themeWatcher.terminate()
-                self.themeWatcher.wait()
-                self.themeWatcher.deleteLater()
             event.accept()
             return
         else:
