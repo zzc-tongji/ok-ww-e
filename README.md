@@ -18,6 +18,8 @@
 
 ![alt text](readme/enhanced.002.png)
 
+![alt text](readme/enhanced.003.png)
+
 #### 新版体力任务（无音区、凝素领域、模拟领域）
 
 - 支持设置刷取次数：
@@ -25,9 +27,20 @@
   - 刷取次数以1倍（最低）体力计算。支持2倍体力刷取副本（相应刷取次数记为2）。
   - 实现方式是注入 use_stamina 函数。这是注入前后的对比 [use_stamina.diff.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/zzc-tongji/ok-ww-enhanced/refs/heads/main/readme/use_stamina.diff.html) 。
 
+#### 新版刷4C声骸任务
+
+- 支持 高级技能材料模式：
+  - 如果启用，只会在下列三个条件均满足时执行：
+    - 选项 "传送至Boss" 为 "战歌重奏"。
+    - 高级技能材料 获取次数 未达每周上限。
+    - 体力至少够刷1次。
+  - 启用后，选项 "刷多少次" 将会被无视，实际刷取次数取决于 每周上限 和 剩余体力。
+  - 代码变更报告：[FarmEchoTask.diff.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/zzc-tongji/ok-ww-enhanced/refs/heads/main/readme/FarmEchoTask.diff.html) 。
+
 #### 新版一条龙任务
 
 - 采用新版体力任务（无音区、凝素领域、模拟领域）。支持每种体力任务独立设置刷取次数（支持 跳过刷取 和 刷完所有体力）。
+- 采用新版刷4C声骸任务。如果启用 高级技能材料模式 则在 新版体力任务 前执行。
 - 支持设置重试次数（对每个任务分别生效）。若重试次数用尽也无法完成，则记录日志并 **截图**。
 - 日志文件 `./logs/ok-script.log` 优化：
   - 如果某些任务无法完成，会包含文本 `未完成`，以便后续处理（例如发送通知）。
@@ -115,23 +128,23 @@ https://htmlpreview.github.io/?https://raw.githubusercontent.com/zzc-tongji/ok-w
 
 <div align="center">
   <h1 align="center">
-    <img src="icon.png" width="200" alt="ok-ww logo"/>
+    <img src="icons/icon.png" width="200" alt="ok-ww logo"/>
     <br/>
     ok-ww
-  </h1> 
-  
+  </h1>
+
   <p>
-    一个基于图像识别的鸣潮自动化程序，支持后台运行，基于 <a href="https://github.com/ok-oldking/ok-script">ok-script</a> 开发。
+    一个基于图像识别的鸣潮自动化程序，支持后台运行，基于 <a href="https://ok-script.com">ok-script</a> 开发。
     <br />
-    An image-recognition-based automation tool for Wuthering Waves, with background mode support, developed with <a href="https://github.com/ok-oldking/ok-script">ok-script</a>.
+    An image-recognition-based automation tool for Wuthering Waves, with background mode support, developed with <a href="https://ok-script.com">ok-script</a>.
   </p>
-  
+
   <p><i>通过 Windows 接口模拟用户进行操作，无内存读取、无文件修改</i></p>
 </div>
 
 <!-- Badges -->
 <div align="center">
-  
+
 ![平台](https://img.shields.io/badge/platform-Windows-blue)
 [![GitHub release](https://img.shields.io/github/v/release/ok-oldking/ok-wuthering-waves)](https://github.com/ok-oldking/ok-wuthering-waves/releases)
 [![总下载量](https://img.shields.io/github/downloads/ok-oldking/ok-wuthering-waves/total)](https://github.com/ok-oldking/ok-wuthering-waves/releases)
@@ -139,7 +152,9 @@ https://htmlpreview.github.io/?https://raw.githubusercontent.com/zzc-tongji/ok-w
 
 </div>
 
-### [English Readme](README_en.md) | 中文说明 | [繁體中文說明](README_zh_TW.md) | [日本語Readme](README_ja.md)
+<p align="center"><strong>官方网站：</strong> <a href="https://ok-script.com/ok-ww">https://ok-script.com/ok-ww</a></p>
+
+### [English](docs/en/index.md) | 中文说明 | [繁體中文](docs/zh-TW/index.md) | [日本語](docs/ja/index.md)
 
 **演示与教程:** [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtu.be/h6P1KWjdnB4)
 
@@ -234,7 +249,7 @@ ok-ww.exe -t 1 -e
 *   **QQ 频道**: [点击加入](https://pd.qq.com/s/djmm6l44y) (群满或获取最新资讯)
 *   **开发者群**: `926858895` ( **注意**: 此群仅面向有开发能力、希望参与贡献的开发者，入群前请确保您已能够从源码成功运行项目。)
 
-本项目基于 [ok-script](https://github.com/ok-oldking/ok-script) 框架开发，简单易维护。欢迎有兴趣的开发者使用 [ok-script](https://github.com/ok-oldking/ok-script) 开发您自己的自动化项目。
+本项目基于 [ok-script](https://ok-script.com) 框架开发，简单易维护。欢迎有兴趣的开发者使用 [ok-script](https://ok-script.com) 开发您自己的自动化项目。
 
 ## 🔗 使用ok-script的项目：
 

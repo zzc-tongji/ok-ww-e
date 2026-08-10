@@ -10,7 +10,7 @@ from qfluentwidgets import FluentIcon
 from ok import Box, ConfigOption
 from src.task.process_feature import process_feature
 
-version = "v3.5.27-rc.2"
+version = "v3.5.27-rc.3"
 
 
 def _find_most_recently_run_pc_exe():
@@ -156,6 +156,7 @@ monthly_card_config_option = ConfigOption('Monthly Card Config', {
 
 config = {
     'debug': False,  # Optional, default: False
+    'custom_tasks': True,
     'use_gui': True,
     'config_folder': 'configs',
     'blur_area': blur_area,
@@ -252,9 +253,11 @@ config = {
     'version': version,
     'onetime_tasks': [  # tasks to execute
         ["src.task.DailyTask2", "DailyTask2"],
+        ["src.task.FarmEchoTask2", "FarmEchoTask2"],
+        ["src.task.TacetTask2", "TacetTask2"],
         ["src.task.ForgeryTask2", "ForgeryTask2"],
         ["src.task.SimulationTask2", "SimulationTask2"],
-        ["src.task.TacetTask2", "TacetTask2"],
+        #
         ["src.task.DailyTask", "DailyTask"],
         ["src.task.FarmEchoTask", "FarmEchoTask"],
         ["src.task.NightmareNestTask", "NightmareNestTask"],
