@@ -30,6 +30,7 @@ class TaskExecutor:
     debug: bool
     global_config: object
     _ocr_lib: dict
+    _ocr_init_results: dict
     ocr_target_height: int
     current_task: object
     config_folder: str
@@ -75,6 +76,7 @@ class TaskExecutor:
         self.debug = debug
         self.global_config = global_config
         self._ocr_lib = {}
+        self._ocr_init_results = {}
         if self.config.get('ocr') and not self.config.get('ocr').get('default', False):
             self.config['ocr']['default'] = self.config.get('ocr')
         self.current_task = None
@@ -89,6 +91,8 @@ class TaskExecutor:
         self.lock = threading.Lock()
         self._wake_condition = threading.Condition()
         self._wake_version = 0
+        self._destroy_lock = threading.Lock()
+        self._destroyed = False
         if hasattr(self.exit_event, 'bind_condition'):
             self.exit_event.bind_condition(self._wake_condition)
         self._ocr_lib_lock = threading.Lock()
@@ -148,9 +152,20 @@ class TaskExecutor:
         try:
             logger.info('start init default ocr')
             self.ocr_lib()
-            logger.info(f'default ocr init end, cost: {time.time() - start:.2f}s')
+            result = self._ocr_init_results.get('default', 'success')
+            logger.info(f'default ocr init end, result: {result}, cost: {time.time() - start:.2f}s')
         except Exception as e:
             logger.error(f'init default ocr error, cost: {time.time() - start:.2f}s', e)
+
+    @staticmethod
+    def _onnxocr_test_frame():
+        import cv2
+        import numpy as np
+
+        frame = np.full((160, 640, 3), 255, dtype=np.uint8)
+        cv2.putText(frame, 'okscript', (24, 110), cv2.FONT_HERSHEY_SIMPLEX,
+                    2.5, (0, 0, 0), 5, cv2.LINE_AA)
+        return frame
 
     def _create_ocr_lib(self, name):
         ocr_config = self.config.get('ocr').get(name)
@@ -186,10 +201,31 @@ class TaskExecutor:
         elif lib == 'onnxocr':
             from onnxocr.onnx_paddleocr import ONNXPaddleOcr
             logger.info(f'init onnxocr {config_params}')
-            ocr_lib = ONNXPaddleOcr(use_angle_cls=False,
-                                    logger=logger,
-                                    use_npu=config_params.get('use_npu', True),
-                                    use_openvino=config_params.get('use_openvino', False))
+            use_npu = config_params.get('use_npu', True)
+            use_openvino = config_params.get('use_openvino', False)
+            if use_npu:
+                test_frame = self._onnxocr_test_frame()
+                try:
+                    ocr_lib = ONNXPaddleOcr(use_angle_cls=False,
+                                            logger=logger,
+                                            use_npu=True,
+                                            use_openvino=use_openvino)
+                    test_result = ocr_lib.ocr(test_frame)
+                    self._ocr_init_results[name] = f'use_npu=True, test_ocr={test_result!r}'
+                except Exception as error:
+                    logger.warning(f'onnxocr NPU test failed, falling back to CPU: {error}')
+                    ocr_lib = ONNXPaddleOcr(use_angle_cls=False,
+                                            logger=logger,
+                                            use_npu=False,
+                                            use_openvino=use_openvino)
+                    self._ocr_init_results[name] = (
+                        f'use_npu=False (NPU test failed: {error!r})')
+            else:
+                ocr_lib = ONNXPaddleOcr(use_angle_cls=False,
+                                        logger=logger,
+                                        use_npu=False,
+                                        use_openvino=use_openvino)
+                self._ocr_init_results[name] = 'use_npu=False'
         elif lib == 'rapidocr':
             from rapidocr import RapidOCR
             params = {"Global.use_cls": False, "Global.max_side_len": 100000, "Global.min_side_len": 0,
@@ -199,7 +235,9 @@ class TaskExecutor:
             ocr_lib = RapidOCR(params=params)
         else:
             raise Exception(f'ocr lib not supported: {lib}')
-        logger.info(f'ocr_lib init {ocr_lib} {lib}')
+        if name not in self._ocr_init_results:
+            self._ocr_init_results[name] = f'lib={lib}, success'
+        logger.info(f'ocr_lib init {ocr_lib} {lib}, result: {self._ocr_init_results[name]}')
         return ocr_lib
 
     def nullable_frame(self):
@@ -393,7 +431,10 @@ class TaskExecutor:
     def start(self):
         with self.lock:
             if self.thread is None:
-                self.thread = threading.Thread(target=self.execute, name="TaskExecutor")
+                # Application shutdown must not be held hostage by a custom
+                # task or interaction backend that ignores exit_event.
+                self.thread = threading.Thread(
+                    target=self.execute, name="TaskExecutor", daemon=True)
                 self.thread.start()
             if self.paused:
                 self.paused = False
@@ -623,15 +664,34 @@ class TaskExecutor:
         self._wake_executor()
 
     def destroy(self):
+        lock = getattr(self, '_destroy_lock', None)
+        if lock is None:
+            lock = self._destroy_lock = threading.Lock()
+        with lock:
+            if getattr(self, '_destroyed', False):
+                return
+            self._destroyed = True
         logger.info(f'Executor destroy')
-        for task in self.onetime_tasks:
-            task.on_destroy()
-        self.onetime_tasks = []
-        for task in self.trigger_tasks:
-            task.on_destroy()
-        self.trigger_tasks = []
+        onetime_tasks, self.onetime_tasks = self.onetime_tasks, []
+        trigger_tasks, self.trigger_tasks = self.trigger_tasks, []
+        for task in (*onetime_tasks, *trigger_tasks):
+            try:
+                task.on_destroy()
+            except Exception as error:
+                logger.error(f'task on_destroy failed for {task}: {error}')
         if self.interaction:
-            self.interaction.on_destroy()
+            try:
+                self.interaction.on_destroy()
+            except Exception as error:
+                logger.error(f'interaction on_destroy failed: {error}')
+
+    def request_destroy(self):
+        """Run cleanup away from the GUI close event when needed."""
+        if self.thread is not None and self.thread.is_alive():
+            # execute() owns normal cleanup after observing exit_event.
+            return
+        threading.Thread(
+            target=self.destroy, name="TaskExecutorCleanup", daemon=True).start()
 
     def wait_until_done(self):
         self.thread.join()
