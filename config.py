@@ -5,7 +5,7 @@ from pathlib import Path
 from ok import Box, ConfigOption, Icon
 from src.task.process_feature import process_feature
 
-version = "v3.6.6-rc.3"
+version = "v3.6.8-rc.0"
 
 
 def _find_most_recently_run_pc_exe():
