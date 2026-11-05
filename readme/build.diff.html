@@ -66,8 +66,8 @@
           <path d="M6 9H3V7h3V4l5 4-5 4V9z m8-7v12c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V2c0-0.55 0.45-1 1-1h12c0.55 0 1 0.45 1 1z m-1 0H1v12h12V2z"></path>
       </svg>      <a href="#d2h-709654" class="d2h-file-name">.github/workflows/{build.enhanced.yaml → build.yml}</a>
       <span class="d2h-file-stats">
-          <span class="d2h-lines-added">+210</span>
-          <span class="d2h-lines-deleted">-20</span>
+          <span class="d2h-lines-added">+215</span>
+          <span class="d2h-lines-deleted">-31</span>
       </span>
     </span>
 </li>
@@ -323,7 +323,7 @@
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-info"></td>
     <td class="d2h-info">
-        <div class="d2h-code-side-line">@@ -34,8 +34,8 @@</div>
+        <div class="d2h-code-side-line">@@ -34,13 +34,12 @@</div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
@@ -406,9 +406,154 @@
         </div>
     </td>
 </tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      42
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        with:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del">
+      43
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">          submodules: true</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      44
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          lfs: true</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      45
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          fetch-depth: 0</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      46
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          persist-credentials: false</span>
+        </div>
+    </td>
+</tr><tr>
     <td class="d2h-code-side-linenumber d2h-info"></td>
     <td class="d2h-info">
-        <div class="d2h-code-side-line">@@ -65,19 +65,28 @@</div>
+        <div class="d2h-code-side-line">@@ -55,9 +54,7 @@</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      55
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">            pyproject.toml</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      56
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      57
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Install dependencies</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del d2h-change">
+      58
+    </td>
+    <td class="d2h-del d2h-change">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">        run: <del>|</del></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del">
+      59
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">          python -m pip install -r requirements.txt</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del">
+      60
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">          python -m pip install &quot;.[dev]&quot;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      61
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      62
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Prepare release requirements</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      63
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        env:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-side-line">@@ -65,19 +62,28 @@</div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
@@ -693,82 +838,7 @@
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-info"></td>
     <td class="d2h-info">
-        <div class="d2h-code-side-line">@@ -86,7 +95,7 @@</div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      86
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn"><br></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      87
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">          Get-ChildItem -Path &quot;.\tests\*.py&quot; | ForEach-Object {</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      88
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">            Write-Host &quot;Running tests in $($_.FullName)&quot;</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-del d2h-change">
-      89
-    </td>
-    <td class="d2h-del d2h-change">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">-</span>
-            <span class="d2h-code-line-ctn">            python -<del>m</del> <del>unittest</del> $_.FullName</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      90
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn"><br></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      91
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">            if ($LASTEXITCODE -ne 0) {</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      92
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">              throw &quot;Tests failed in $($_.FullName)&quot;</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-info"></td>
-    <td class="d2h-info">
-        <div class="d2h-code-side-line">@@ -110,8 +119,8 @@</div>
+        <div class="d2h-code-side-line">@@ -110,13 +116,12 @@</div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
@@ -851,9 +921,154 @@
         </div>
     </td>
 </tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      118
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        with:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del">
+      119
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">          submodules: true</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      120
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          lfs: true</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      121
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          fetch-depth: 0</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      122
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          persist-credentials: false</span>
+        </div>
+    </td>
+</tr><tr>
     <td class="d2h-code-side-linenumber d2h-info"></td>
     <td class="d2h-info">
-        <div class="d2h-code-side-line">@@ -142,11 +151,12 @@</div>
+        <div class="d2h-code-side-line">@@ -131,9 +136,7 @@</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      131
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">            pyproject.toml</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      132
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      133
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Install dependencies</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del d2h-change">
+      134
+    </td>
+    <td class="d2h-del d2h-change">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">        run: <del>|</del></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del">
+      135
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">          python -m pip install -r requirements.txt</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del">
+      136
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">          python -m pip install &quot;.[dev]&quot;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      137
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      138
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Prepare release requirements</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      139
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        env:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-side-line">@@ -142,11 +145,12 @@</div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
@@ -978,7 +1193,7 @@
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-info"></td>
     <td class="d2h-info">
-        <div class="d2h-code-side-line">@@ -155,16 +165,20 @@</div>
+        <div class="d2h-code-side-line">@@ -155,16 +159,20 @@</div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
@@ -1183,7 +1398,7 @@
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-info"></td>
     <td class="d2h-info">
-        <div class="d2h-code-side-line">@@ -173,8 +187,8 @@</div>
+        <div class="d2h-code-side-line">@@ -173,13 +181,12 @@</div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
@@ -1266,9 +1481,149 @@
         </div>
     </td>
 </tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      181
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        with:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del">
+      182
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">          submodules: true</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      183
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          lfs: true</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      184
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          fetch-depth: 0</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      185
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          persist-credentials: false</span>
+        </div>
+    </td>
+</tr><tr>
     <td class="d2h-code-side-linenumber d2h-info"></td>
     <td class="d2h-info">
-        <div class="d2h-code-side-line">@@ -203,12 +217,175 @@</div>
+        <div class="d2h-code-side-line">@@ -194,21 +201,186 @@</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      194
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">            pyproject.toml</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      195
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      196
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Install dependencies</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del d2h-change">
+      197
+    </td>
+    <td class="d2h-del d2h-change">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">        run: <del>|</del></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del">
+      198
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">          python -m pip install -r requirements.txt</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-del">
+      199
+    </td>
+    <td class="d2h-del">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">-</span>
+            <span class="d2h-code-line-ctn">          python -m pip install &quot;.[dev]&quot;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      200
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      201
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Prepare release requirements</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      202
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        env:</span>
+        </div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
@@ -1296,6 +1651,26 @@
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
             <span class="d2h-code-line-prefix">&nbsp;</span>
             <span class="d2h-code-line-ctn"><br></span>
         </div>
@@ -2951,6 +3326,26 @@
         </div>
     </td>
 </tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
       209
     </td>
@@ -3023,7 +3418,122 @@
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-info"></td>
     <td class="d2h-info">
-        <div class="d2h-code-side-line">@@ -235,10 +412,23 @@</div>
+        <div class="d2h-code-side-line">@@ -227,6 +399,11 @@</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      227
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          name: release-assets</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      228
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          path: pyappify_dist</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      229
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      230
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Create GitHub release</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      231
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        uses: softprops&#x2F;action-gh-release@v2</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      232
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        env:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-side-line">@@ -235,10 +412,17 @@</div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
@@ -3062,7 +3572,7 @@
     <td class="d2h-del d2h-change">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">-</span>
-            <span class="d2h-code-line-ctn">            ### 下载说明</span>
+            <span class="d2h-code-line-ctn">            ### <del>下载说明</del></span>
         </div>
     </td>
 </tr><tr>
@@ -3072,67 +3582,17 @@
     <td class="d2h-del d2h-change">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">-</span>
-            <span class="d2h-code-line-ctn">              * ok-ww-<del>e-</del>win32-<del>Global</del>-setup.exe <del>full</del> <del>package</del> <del>with dependencies</del>, <del>using GitHub and PyPi as update source</del>.</span>
+            <span class="d2h-code-line-ctn">              <del>*</del> ok-<del>ww</del>-<del>e</del>-<del>win32-Global-setup</del>.<del>exe full package with dependencies, using GitHub and PyPi as update source</del>.</span>
         </div>
     </td>
 </tr><tr>
-    <td class="d2h-code-side-linenumber d2h-del d2h-change">
+    <td class="d2h-code-side-linenumber d2h-del">
       240
     </td>
-    <td class="d2h-del d2h-change">
+    <td class="d2h-del">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">-</span>
-            <span class="d2h-code-line-ctn">              * <del>不要下载 `</del>ok-ww-<del>e-</del>win32.<del>zip`</del> <del>和 `SourceCode</del>.<del>zip`</del> <del>。 Do Not Download `</del>ok-ww-<del>e-</del>win32.<del>zip`</del> and <del>`SourceCode.zip`</del> <del>.</del></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
-      
-    </td>
-    <td class="d2h-cntx d2h-emptyplaceholder">
-        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn"><br></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
-      
-    </td>
-    <td class="d2h-cntx d2h-emptyplaceholder">
-        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn"><br></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
-      
-    </td>
-    <td class="d2h-cntx d2h-emptyplaceholder">
-        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn"><br></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
-      
-    </td>
-    <td class="d2h-cntx d2h-emptyplaceholder">
-        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn"><br></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
-      
-    </td>
-    <td class="d2h-cntx d2h-emptyplaceholder">
-        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">              * 不要下载 `ok-ww-e-win32.zip` 和 `SourceCode.zip` 。 Do Not Download `ok-ww-e-win32.zip` and `SourceCode.zip` .</span>
         </div>
     </td>
 </tr><tr>
@@ -3590,23 +4050,73 @@
         </div>
     </td>
 </tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      42
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        with:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      43
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          lfs: true</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      44
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          fetch-depth: 0</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      45
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          persist-credentials: false</span>
+        </div>
+    </td>
+</tr><tr>
     <td class="d2h-code-side-linenumber d2h-info"></td>
     <td class="d2h-info">
         <div class="d2h-code-side-line">&nbsp;</div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      65
+      54
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">        run: python -m ok.update.inline_ok_requirements --tag &quot;$env:RELEASE_TAG&quot;</span>
+            <span class="d2h-code-line-ctn">            pyproject.toml</span>
         </div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      66
+      55
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3616,7 +4126,102 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      67
+      56
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Install dependencies</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins d2h-change">
+      57
+    </td>
+    <td class="d2h-ins d2h-change">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        run: <ins>python .github&#x2F;scripts&#x2F;install_dependencies.py</ins></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      58
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      59
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Prepare release requirements</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      60
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        env:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-side-line">&nbsp;</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      62
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        run: python -m ok.update.inline_ok_requirements --tag &quot;$env:RELEASE_TAG&quot;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      63
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      64
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3626,7 +4231,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      68
+      65
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -3636,7 +4241,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      69
+      66
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3646,7 +4251,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      70
+      67
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3656,7 +4261,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      71
+      68
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3666,7 +4271,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      72
+      69
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -3676,7 +4281,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      73
+      70
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -3686,7 +4291,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      74
+      71
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -3696,7 +4301,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      75
+      72
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3706,7 +4311,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      76
+      73
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3716,7 +4321,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      77
+      74
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -3726,7 +4331,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      78
+      75
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3736,7 +4341,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      79
+      76
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3746,7 +4351,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      80
+      77
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3756,7 +4361,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      81
+      78
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3766,7 +4371,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      82
+      79
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3776,7 +4381,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      83
+      80
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3786,7 +4391,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      84
+      81
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -3796,7 +4401,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      85
+      82
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -3806,7 +4411,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      86
+      83
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -3816,7 +4421,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      87
+      84
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3826,7 +4431,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      88
+      85
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3836,7 +4441,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      89
+      86
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -3846,7 +4451,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      90
+      87
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3856,7 +4461,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      91
+      88
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3866,7 +4471,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      92
+      89
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3881,82 +4486,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      95
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn"><br></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      96
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">          Get-ChildItem -Path &quot;.\tests\*.py&quot; | ForEach-Object {</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      97
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">            Write-Host &quot;Running tests in $($_.FullName)&quot;</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins d2h-change">
-      98
-    </td>
-    <td class="d2h-ins d2h-change">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            python -<ins>u</ins> <ins>run_test.py</ins> $_.FullName</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      99
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn"><br></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      100
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">            if ($LASTEXITCODE -ne 0) {</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      101
-    </td>
-    <td class="d2h-cntx">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">              throw &quot;Tests failed in $($_.FullName)&quot;</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-info"></td>
-    <td class="d2h-info">
-        <div class="d2h-code-side-line">&nbsp;</div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
-      119
+      116
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3966,7 +4496,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      120
+      117
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3976,7 +4506,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      121
+      118
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -3986,7 +4516,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins d2h-change">
-      122
+      119
     </td>
     <td class="d2h-ins d2h-change">
         <div class="d2h-code-side-line">
@@ -3996,7 +4526,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins d2h-change">
-      123
+      120
     </td>
     <td class="d2h-ins d2h-change">
         <div class="d2h-code-side-line">
@@ -4006,10 +4536,50 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
+      121
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      122
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Check out source</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      123
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        uses: actions&#x2F;checkout@v4</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
       124
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        with:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
             <span class="d2h-code-line-prefix">&nbsp;</span>
             <span class="d2h-code-line-ctn"><br></span>
         </div>
@@ -4021,7 +4591,7 @@
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">      - name: Check out source</span>
+            <span class="d2h-code-line-ctn">          lfs: true</span>
         </div>
     </td>
 </tr><tr>
@@ -4031,7 +4601,17 @@
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">        uses: actions&#x2F;checkout@v4</span>
+            <span class="d2h-code-line-ctn">          fetch-depth: 0</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      127
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          persist-credentials: false</span>
         </div>
     </td>
 </tr><tr>
@@ -4041,7 +4621,17 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      151
+      136
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">            pyproject.toml</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      137
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4051,7 +4641,92 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      152
+      138
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Install dependencies</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins d2h-change">
+      139
+    </td>
+    <td class="d2h-ins d2h-change">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        run: <ins>python .github&#x2F;scripts&#x2F;install_dependencies.py</ins></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      140
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      141
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Prepare release requirements</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      142
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        env:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-side-line">&nbsp;</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      145
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      146
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4061,7 +4736,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      153
+      147
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4071,7 +4746,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      154
+      148
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4081,7 +4756,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      155
+      149
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4091,7 +4766,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      156
+      150
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4101,7 +4776,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      157
+      151
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4111,7 +4786,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      158
+      152
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4121,7 +4796,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins d2h-change">
-      159
+      153
     </td>
     <td class="d2h-ins d2h-change">
         <div class="d2h-code-side-line">
@@ -4131,7 +4806,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      160
+      154
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4141,7 +4816,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      161
+      155
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4151,7 +4826,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      162
+      156
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4166,7 +4841,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      165
+      159
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4176,7 +4851,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      166
+      160
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4186,7 +4861,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      167
+      161
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4196,7 +4871,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins d2h-change">
-      168
+      162
     </td>
     <td class="d2h-ins d2h-change">
         <div class="d2h-code-side-line">
@@ -4206,7 +4881,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      169
+      163
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4216,7 +4891,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      170
+      164
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4226,7 +4901,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      171
+      165
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4236,7 +4911,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      172
+      166
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4246,7 +4921,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      173
+      167
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4256,7 +4931,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      174
+      168
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4266,7 +4941,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      175
+      169
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4276,7 +4951,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      176
+      170
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4286,7 +4961,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins d2h-change">
-      177
+      171
     </td>
     <td class="d2h-ins d2h-change">
         <div class="d2h-code-side-line">
@@ -4296,7 +4971,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      178
+      172
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4306,7 +4981,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      179
+      173
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4316,7 +4991,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      180
+      174
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4326,7 +5001,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      181
+      175
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4336,7 +5011,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      182
+      176
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4346,7 +5021,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      183
+      177
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4356,7 +5031,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      184
+      178
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4371,7 +5046,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      187
+      181
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4381,7 +5056,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      188
+      182
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4391,7 +5066,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      189
+      183
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4401,7 +5076,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins d2h-change">
-      190
+      184
     </td>
     <td class="d2h-ins d2h-change">
         <div class="d2h-code-side-line">
@@ -4411,7 +5086,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins d2h-change">
-      191
+      185
     </td>
     <td class="d2h-ins d2h-change">
         <div class="d2h-code-side-line">
@@ -4421,7 +5096,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      192
+      186
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4431,7 +5106,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      193
+      187
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4441,12 +5116,62 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      194
+      188
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">&nbsp;</span>
             <span class="d2h-code-line-ctn">        uses: actions&#x2F;checkout@v4</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      189
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        with:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      190
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          lfs: true</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      191
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          fetch-depth: 0</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      192
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          persist-credentials: false</span>
         </div>
     </td>
 </tr><tr>
@@ -4456,7 +5181,97 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      217
+      201
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">            pyproject.toml</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      202
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      203
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Install dependencies</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins d2h-change">
+      204
+    </td>
+    <td class="d2h-ins d2h-change">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        run: <ins>python .github&#x2F;scripts&#x2F;install_dependencies.py</ins></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
+    </td>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      205
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      206
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Prepare release requirements</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      207
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        env:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      208
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4466,7 +5281,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      218
+      209
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4476,7 +5291,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      219
+      210
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -4486,7 +5301,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      220
+      211
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4496,7 +5311,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      221
+      212
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4506,7 +5321,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      222
+      213
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4516,7 +5331,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      223
+      214
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4526,7 +5341,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      224
+      215
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4536,7 +5351,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      225
+      216
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4546,7 +5361,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      226
+      217
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -4556,12 +5371,102 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      227
+      218
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
             <span class="d2h-code-line-ctn">          use_release: ${{ env.USE_RELEASE }}</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      219
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">          add_version_name: true</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      220
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      221
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">      - name: Build portable executable</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      222
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        id: build_executable</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      223
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        uses: ok-oldking&#x2F;pyappify-action@master</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      224
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.USE_RELEASE == &#x27;&#x27;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      225
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        with:</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      226
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">          build_exe_only: ${{ env.SIGN_BUILD == &#x27;true&#x27; }}</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      227
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">          add_version_name: true</span>
         </div>
     </td>
 </tr><tr>
@@ -4581,7 +5486,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">      - name: Build portable executable</span>
+            <span class="d2h-code-line-ctn">      - name: Upload portable executable for signing</span>
         </div>
     </td>
 </tr><tr>
@@ -4591,7 +5496,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        id: build_executable</span>
+            <span class="d2h-code-line-ctn">        id: upload_executable</span>
         </div>
     </td>
 </tr><tr>
@@ -4601,7 +5506,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        uses: ok-oldking&#x2F;pyappify-action@master</span>
+            <span class="d2h-code-line-ctn">        uses: actions&#x2F;upload-artifact@v4</span>
         </div>
     </td>
 </tr><tr>
@@ -4611,7 +5516,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.USE_RELEASE == &#x27;&#x27;</span>
+            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27; &amp;&amp; env.USE_RELEASE == &#x27;&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4631,7 +5536,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          build_exe_only: ${{ env.SIGN_BUILD == &#x27;true&#x27; }}</span>
+            <span class="d2h-code-line-ctn">          name: portable-executable-to-sign</span>
         </div>
     </td>
 </tr><tr>
@@ -4641,7 +5546,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">          path: ${{ steps.build_executable.outputs.exe-path }}</span>
         </div>
     </td>
 </tr><tr>
@@ -4651,7 +5556,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">      - name: Upload portable executable for signing</span>
+            <span class="d2h-code-line-ctn">          if-no-files-found: error</span>
         </div>
     </td>
 </tr><tr>
@@ -4661,7 +5566,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        id: upload_executable</span>
+            <span class="d2h-code-line-ctn">          retention-days: 1</span>
         </div>
     </td>
 </tr><tr>
@@ -4671,7 +5576,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        uses: actions&#x2F;upload-artifact@v4</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -4681,7 +5586,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27; &amp;&amp; env.USE_RELEASE == &#x27;&#x27;</span>
+            <span class="d2h-code-line-ctn">      - name: Sign portable executable</span>
         </div>
     </td>
 </tr><tr>
@@ -4691,7 +5596,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        with:</span>
+            <span class="d2h-code-line-ctn">        id: sign_executable</span>
         </div>
     </td>
 </tr><tr>
@@ -4701,7 +5606,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          name: portable-executable-to-sign</span>
+            <span class="d2h-code-line-ctn">        uses: signpath&#x2F;github-action-submit-signing-request@v2.2</span>
         </div>
     </td>
 </tr><tr>
@@ -4711,7 +5616,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          path: ${{ steps.build_executable.outputs.exe-path }}</span>
+            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27; &amp;&amp; env.USE_RELEASE == &#x27;&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4721,7 +5626,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          if-no-files-found: error</span>
+            <span class="d2h-code-line-ctn">        with:</span>
         </div>
     </td>
 </tr><tr>
@@ -4731,7 +5636,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          retention-days: 1</span>
+            <span class="d2h-code-line-ctn">          api-token: &#x27;${{ secrets.SIGNPATH_API_TOKEN }}&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4741,7 +5646,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">          organization-id: &#x27;639bc6dd-9623-43cd-ac75-50a445898012&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4751,7 +5656,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">      - name: Sign portable executable</span>
+            <span class="d2h-code-line-ctn">          project-slug: &#x27;ok-wuthering-waves&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4761,7 +5666,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        id: sign_executable</span>
+            <span class="d2h-code-line-ctn">          signing-policy-slug: &#x27;release-signing&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4771,7 +5676,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        uses: signpath&#x2F;github-action-submit-signing-request@v2.2</span>
+            <span class="d2h-code-line-ctn">          artifact-configuration-slug: &#x27;single-exe&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4781,7 +5686,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27; &amp;&amp; env.USE_RELEASE == &#x27;&#x27;</span>
+            <span class="d2h-code-line-ctn">          github-artifact-id: &#x27;${{ steps.upload_executable.outputs.artifact-id }}&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4791,7 +5696,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        with:</span>
+            <span class="d2h-code-line-ctn">          wait-for-completion: false</span>
         </div>
     </td>
 </tr><tr>
@@ -4801,7 +5706,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          api-token: &#x27;${{ secrets.SIGNPATH_API_TOKEN }}&#x27;</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -4811,7 +5716,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          organization-id: &#x27;639bc6dd-9623-43cd-ac75-50a445898012&#x27;</span>
+            <span class="d2h-code-line-ctn">      - name: Approve portable executable signing</span>
         </div>
     </td>
 </tr><tr>
@@ -4821,7 +5726,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          project-slug: &#x27;ok-wuthering-waves&#x27;</span>
+            <span class="d2h-code-line-ctn">        uses: fjogeleit&#x2F;http-request-action@v1</span>
         </div>
     </td>
 </tr><tr>
@@ -4831,7 +5736,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          signing-policy-slug: &#x27;release-signing&#x27;</span>
+            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27; &amp;&amp; env.USE_RELEASE == &#x27;&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4841,7 +5746,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          artifact-configuration-slug: &#x27;single-exe&#x27;</span>
+            <span class="d2h-code-line-ctn">        with:</span>
         </div>
     </td>
 </tr><tr>
@@ -4851,7 +5756,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          github-artifact-id: &#x27;${{ steps.upload_executable.outputs.artifact-id }}&#x27;</span>
+            <span class="d2h-code-line-ctn">          url: &#x27;https:&#x2F;&#x2F;app.signpath.io&#x2F;API&#x2F;v1&#x2F;639bc6dd-9623-43cd-ac75-50a445898012&#x2F;SigningRequests&#x2F;${{ steps.sign_executable.outputs.signing-request-id }}&#x2F;Approve&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4861,7 +5766,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          wait-for-completion: false</span>
+            <span class="d2h-code-line-ctn">          method: POST</span>
         </div>
     </td>
 </tr><tr>
@@ -4871,7 +5776,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">          bearerToken: &#x27;${{ secrets.SIGNPATH_API_TOKEN }}&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4881,7 +5786,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">      - name: Approve portable executable signing</span>
+            <span class="d2h-code-line-ctn">          contentType: application&#x2F;json</span>
         </div>
     </td>
 </tr><tr>
@@ -4891,7 +5796,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        uses: fjogeleit&#x2F;http-request-action@v1</span>
+            <span class="d2h-code-line-ctn">          data: &#x27;{}&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4901,7 +5806,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27; &amp;&amp; env.USE_RELEASE == &#x27;&#x27;</span>
+            <span class="d2h-code-line-ctn">          preventFailureOnNoResponse: true</span>
         </div>
     </td>
 </tr><tr>
@@ -4911,7 +5816,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        with:</span>
+            <span class="d2h-code-line-ctn">          retry: 60</span>
         </div>
     </td>
 </tr><tr>
@@ -4921,7 +5826,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          url: &#x27;https:&#x2F;&#x2F;app.signpath.io&#x2F;API&#x2F;v1&#x2F;639bc6dd-9623-43cd-ac75-50a445898012&#x2F;SigningRequests&#x2F;${{ steps.sign_executable.outputs.signing-request-id }}&#x2F;Approve&#x27;</span>
+            <span class="d2h-code-line-ctn">          retryWait: 10000</span>
         </div>
     </td>
 </tr><tr>
@@ -4931,7 +5836,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          method: POST</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -4941,7 +5846,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          bearerToken: &#x27;${{ secrets.SIGNPATH_API_TOKEN }}&#x27;</span>
+            <span class="d2h-code-line-ctn">      - name: Download signed portable executable</span>
         </div>
     </td>
 </tr><tr>
@@ -4951,7 +5856,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          contentType: application&#x2F;json</span>
+            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27; &amp;&amp; env.USE_RELEASE == &#x27;&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -4961,7 +5866,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          data: &#x27;{}&#x27;</span>
+            <span class="d2h-code-line-ctn">        shell: pwsh</span>
         </div>
     </td>
 </tr><tr>
@@ -4971,7 +5876,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          preventFailureOnNoResponse: true</span>
+            <span class="d2h-code-line-ctn">        env:</span>
         </div>
     </td>
 </tr><tr>
@@ -4981,7 +5886,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          retry: 60</span>
+            <span class="d2h-code-line-ctn">          SIGNING_REQUEST_ID: ${{ steps.sign_executable.outputs.signing-request-id }}</span>
         </div>
     </td>
 </tr><tr>
@@ -4991,7 +5896,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          retryWait: 10000</span>
+            <span class="d2h-code-line-ctn">          SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}</span>
         </div>
     </td>
 </tr><tr>
@@ -5001,7 +5906,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">          OUTPUT_DIRECTORY: ${{ steps.build_executable.outputs.exe-folder }}</span>
         </div>
     </td>
 </tr><tr>
@@ -5011,7 +5916,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">      - name: Download signed portable executable</span>
+            <span class="d2h-code-line-ctn">        run: |</span>
         </div>
     </td>
 </tr><tr>
@@ -5021,7 +5926,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27; &amp;&amp; env.USE_RELEASE == &#x27;&#x27;</span>
+            <span class="d2h-code-line-ctn">          $baseUrl = &quot;https:&#x2F;&#x2F;app.signpath.io&#x2F;API&#x2F;v1&#x2F;639bc6dd-9623-43cd-ac75-50a445898012&#x2F;SigningRequests&#x2F;$env:SIGNING_REQUEST_ID&quot;</span>
         </div>
     </td>
 </tr><tr>
@@ -5031,7 +5936,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        shell: pwsh</span>
+            <span class="d2h-code-line-ctn">          $headers = @{ Authorization = &quot;Bearer $env:SIGNPATH_API_TOKEN&quot; }</span>
         </div>
     </td>
 </tr><tr>
@@ -5041,7 +5946,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        env:</span>
+            <span class="d2h-code-line-ctn">          $deadline = (Get-Date).AddSeconds(60000)</span>
         </div>
     </td>
 </tr><tr>
@@ -5051,7 +5956,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          SIGNING_REQUEST_ID: ${{ steps.sign_executable.outputs.signing-request-id }}</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5061,7 +5966,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}</span>
+            <span class="d2h-code-line-ctn">          do {</span>
         </div>
     </td>
 </tr><tr>
@@ -5071,7 +5976,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          OUTPUT_DIRECTORY: ${{ steps.build_executable.outputs.exe-folder }}</span>
+            <span class="d2h-code-line-ctn">            $status = Invoke-RestMethod -Uri &quot;$baseUrl&#x2F;Status&quot; -Headers $headers</span>
         </div>
     </td>
 </tr><tr>
@@ -5081,7 +5986,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        run: |</span>
+            <span class="d2h-code-line-ctn">            Write-Host &quot;SignPath status: $($status.status) ($($status.workflowStatus))&quot;</span>
         </div>
     </td>
 </tr><tr>
@@ -5091,7 +5996,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          $baseUrl = &quot;https:&#x2F;&#x2F;app.signpath.io&#x2F;API&#x2F;v1&#x2F;639bc6dd-9623-43cd-ac75-50a445898012&#x2F;SigningRequests&#x2F;$env:SIGNING_REQUEST_ID&quot;</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5101,7 +6006,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          $headers = @{ Authorization = &quot;Bearer $env:SIGNPATH_API_TOKEN&quot; }</span>
+            <span class="d2h-code-line-ctn">            if ($status.status -eq &#x27;Completed&#x27;) {</span>
         </div>
     </td>
 </tr><tr>
@@ -5111,7 +6016,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          $deadline = (Get-Date).AddSeconds(60000)</span>
+            <span class="d2h-code-line-ctn">              break</span>
         </div>
     </td>
 </tr><tr>
@@ -5121,7 +6026,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">            }</span>
         </div>
     </td>
 </tr><tr>
@@ -5131,7 +6036,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          do {</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5141,7 +6046,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            $status = Invoke-RestMethod -Uri &quot;$baseUrl&#x2F;Status&quot; -Headers $headers</span>
+            <span class="d2h-code-line-ctn">            if ($status.isFinalStatus) {</span>
         </div>
     </td>
 </tr><tr>
@@ -5151,7 +6056,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            Write-Host &quot;SignPath status: $($status.status) ($($status.workflowStatus))&quot;</span>
+            <span class="d2h-code-line-ctn">              throw &quot;SignPath request ended with status &#x27;$($status.status)&#x27; ($($status.workflowStatus)).&quot;</span>
         </div>
     </td>
 </tr><tr>
@@ -5161,7 +6066,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">            }</span>
         </div>
     </td>
 </tr><tr>
@@ -5171,7 +6076,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            if ($status.status -eq &#x27;Completed&#x27;) {</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5181,7 +6086,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              break</span>
+            <span class="d2h-code-line-ctn">            if ((Get-Date) -ge $deadline) {</span>
         </div>
     </td>
 </tr><tr>
@@ -5191,7 +6096,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            }</span>
+            <span class="d2h-code-line-ctn">              throw &#x27;Timed out waiting for SignPath to sign the portable executable.&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5201,7 +6106,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">            }</span>
         </div>
     </td>
 </tr><tr>
@@ -5211,7 +6116,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            if ($status.isFinalStatus) {</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5221,7 +6126,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              throw &quot;SignPath request ended with status &#x27;$($status.status)&#x27; ($($status.workflowStatus)).&quot;</span>
+            <span class="d2h-code-line-ctn">            Start-Sleep -Seconds 10</span>
         </div>
     </td>
 </tr><tr>
@@ -5231,7 +6136,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            }</span>
+            <span class="d2h-code-line-ctn">          } while ($true)</span>
         </div>
     </td>
 </tr><tr>
@@ -5251,7 +6156,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            if ((Get-Date) -ge $deadline) {</span>
+            <span class="d2h-code-line-ctn">          $archivePath = Join-Path $env:RUNNER_TEMP &#x27;signed-portable-executable.zip&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5261,7 +6166,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              throw &#x27;Timed out waiting for SignPath to sign the portable executable.&#x27;</span>
+            <span class="d2h-code-line-ctn">          $outputDirectory = [System.IO.Path]::GetFullPath($env:OUTPUT_DIRECTORY)</span>
         </div>
     </td>
 </tr><tr>
@@ -5271,7 +6176,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            }</span>
+            <span class="d2h-code-line-ctn">          New-Item -ItemType Directory -Path $outputDirectory -Force | Out-Null</span>
         </div>
     </td>
 </tr><tr>
@@ -5281,7 +6186,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">          Invoke-WebRequest -Uri &quot;$baseUrl&#x2F;SignedArtifact&quot; -Headers $headers -OutFile $archivePath</span>
         </div>
     </td>
 </tr><tr>
@@ -5291,7 +6196,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            Start-Sleep -Seconds 10</span>
+            <span class="d2h-code-line-ctn">          Expand-Archive -LiteralPath $archivePath -DestinationPath $outputDirectory -Force</span>
         </div>
     </td>
 </tr><tr>
@@ -5301,37 +6206,37 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          } while ($true)</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      302
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
             <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      303
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      302
     </td>
-    <td class="d2h-ins">
+    <td class="d2h-cntx">
         <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          $archivePath = Join-Path $env:RUNNER_TEMP &#x27;signed-portable-executable.zip&#x27;</span>
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Build installers</span>
         </div>
     </td>
 </tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      303
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        id: build_installers</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
       304
     </td>
-    <td class="d2h-ins">
+    <td class="d2h-cntx">
         <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          $outputDirectory = [System.IO.Path]::GetFullPath($env:OUTPUT_DIRECTORY)</span>
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        uses: ok-oldking&#x2F;pyappify-action@master</span>
         </div>
     </td>
 </tr><tr>
@@ -5341,7 +6246,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          New-Item -ItemType Directory -Path $outputDirectory -Force | Out-Null</span>
+            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5351,7 +6256,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          Invoke-WebRequest -Uri &quot;$baseUrl&#x2F;SignedArtifact&quot; -Headers $headers -OutFile $archivePath</span>
+            <span class="d2h-code-line-ctn">        with:</span>
         </div>
     </td>
 </tr><tr>
@@ -5361,7 +6266,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          Expand-Archive -LiteralPath $archivePath -DestinationPath $outputDirectory -Force</span>
+            <span class="d2h-code-line-ctn">          add_version_name: true</span>
         </div>
     </td>
 </tr><tr>
@@ -5375,33 +6280,33 @@
         </div>
     </td>
 </tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
+    <td class="d2h-code-side-linenumber d2h-ins">
       309
     </td>
-    <td class="d2h-cntx">
+    <td class="d2h-ins">
         <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">      - name: Build installers</span>
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">      - name: Upload China installer for signing</span>
         </div>
     </td>
 </tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
+    <td class="d2h-code-side-linenumber d2h-ins">
       310
     </td>
-    <td class="d2h-cntx">
+    <td class="d2h-ins">
         <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">        id: build_installers</span>
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        id: upload_china_installer</span>
         </div>
     </td>
 </tr><tr>
-    <td class="d2h-code-side-linenumber d2h-cntx">
+    <td class="d2h-code-side-linenumber d2h-ins">
       311
     </td>
-    <td class="d2h-cntx">
+    <td class="d2h-ins">
         <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">&nbsp;</span>
-            <span class="d2h-code-line-ctn">        uses: ok-oldking&#x2F;pyappify-action@master</span>
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        uses: actions&#x2F;upload-artifact@v4</span>
         </div>
     </td>
 </tr><tr>
@@ -5421,7 +6326,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">        with:</span>
         </div>
     </td>
 </tr><tr>
@@ -5431,7 +6336,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">      - name: Upload China installer for signing</span>
+            <span class="d2h-code-line-ctn">          name: china-installer-to-sign</span>
         </div>
     </td>
 </tr><tr>
@@ -5441,7 +6346,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        id: upload_china_installer</span>
+            <span class="d2h-code-line-ctn">          path: pyappify_dist&#x2F;ok-ww-win32-China-setup-*.exe</span>
         </div>
     </td>
 </tr><tr>
@@ -5451,7 +6356,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        uses: actions&#x2F;upload-artifact@v4</span>
+            <span class="d2h-code-line-ctn">          if-no-files-found: error</span>
         </div>
     </td>
 </tr><tr>
@@ -5461,7 +6366,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27;</span>
+            <span class="d2h-code-line-ctn">          retention-days: 1</span>
         </div>
     </td>
 </tr><tr>
@@ -5471,7 +6376,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        with:</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5481,7 +6386,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          name: china-installer-to-sign</span>
+            <span class="d2h-code-line-ctn">      - name: Sign China installer</span>
         </div>
     </td>
 </tr><tr>
@@ -5491,7 +6396,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          path: pyappify_dist&#x2F;ok-ww-win32-China-setup.exe</span>
+            <span class="d2h-code-line-ctn">        id: sign_china_installer</span>
         </div>
     </td>
 </tr><tr>
@@ -5501,7 +6406,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          if-no-files-found: error</span>
+            <span class="d2h-code-line-ctn">        uses: signpath&#x2F;github-action-submit-signing-request@v2.2</span>
         </div>
     </td>
 </tr><tr>
@@ -5511,7 +6416,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          retention-days: 1</span>
+            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5521,7 +6426,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">        with:</span>
         </div>
     </td>
 </tr><tr>
@@ -5531,7 +6436,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">      - name: Sign China installer</span>
+            <span class="d2h-code-line-ctn">          api-token: &#x27;${{ secrets.SIGNPATH_API_TOKEN }}&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5541,7 +6446,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        id: sign_china_installer</span>
+            <span class="d2h-code-line-ctn">          organization-id: &#x27;639bc6dd-9623-43cd-ac75-50a445898012&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5551,7 +6456,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        uses: signpath&#x2F;github-action-submit-signing-request@v2.2</span>
+            <span class="d2h-code-line-ctn">          project-slug: &#x27;ok-wuthering-waves&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5561,7 +6466,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27;</span>
+            <span class="d2h-code-line-ctn">          signing-policy-slug: &#x27;release-signing&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5571,7 +6476,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        with:</span>
+            <span class="d2h-code-line-ctn">          artifact-configuration-slug: &#x27;setupexe&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5581,7 +6486,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          api-token: &#x27;${{ secrets.SIGNPATH_API_TOKEN }}&#x27;</span>
+            <span class="d2h-code-line-ctn">          github-artifact-id: &#x27;${{ steps.upload_china_installer.outputs.artifact-id }}&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5591,7 +6496,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          organization-id: &#x27;639bc6dd-9623-43cd-ac75-50a445898012&#x27;</span>
+            <span class="d2h-code-line-ctn">          wait-for-completion: false</span>
         </div>
     </td>
 </tr><tr>
@@ -5601,7 +6506,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          project-slug: &#x27;ok-wuthering-waves&#x27;</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5611,7 +6516,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          signing-policy-slug: &#x27;release-signing&#x27;</span>
+            <span class="d2h-code-line-ctn">      - name: Approve China installer signing</span>
         </div>
     </td>
 </tr><tr>
@@ -5621,7 +6526,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          artifact-configuration-slug: &#x27;setupexe&#x27;</span>
+            <span class="d2h-code-line-ctn">        uses: fjogeleit&#x2F;http-request-action@v1</span>
         </div>
     </td>
 </tr><tr>
@@ -5631,7 +6536,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          github-artifact-id: &#x27;${{ steps.upload_china_installer.outputs.artifact-id }}&#x27;</span>
+            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5641,7 +6546,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          wait-for-completion: false</span>
+            <span class="d2h-code-line-ctn">        with:</span>
         </div>
     </td>
 </tr><tr>
@@ -5651,7 +6556,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">          url: &#x27;https:&#x2F;&#x2F;app.signpath.io&#x2F;API&#x2F;v1&#x2F;639bc6dd-9623-43cd-ac75-50a445898012&#x2F;SigningRequests&#x2F;${{ steps.sign_china_installer.outputs.signing-request-id }}&#x2F;Approve&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5661,7 +6566,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">      - name: Approve China installer signing</span>
+            <span class="d2h-code-line-ctn">          method: POST</span>
         </div>
     </td>
 </tr><tr>
@@ -5671,7 +6576,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        uses: fjogeleit&#x2F;http-request-action@v1</span>
+            <span class="d2h-code-line-ctn">          bearerToken: &#x27;${{ secrets.SIGNPATH_API_TOKEN }}&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5681,7 +6586,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27;</span>
+            <span class="d2h-code-line-ctn">          contentType: application&#x2F;json</span>
         </div>
     </td>
 </tr><tr>
@@ -5691,7 +6596,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        with:</span>
+            <span class="d2h-code-line-ctn">          data: &#x27;{}&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5701,7 +6606,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          url: &#x27;https:&#x2F;&#x2F;app.signpath.io&#x2F;API&#x2F;v1&#x2F;639bc6dd-9623-43cd-ac75-50a445898012&#x2F;SigningRequests&#x2F;${{ steps.sign_china_installer.outputs.signing-request-id }}&#x2F;Approve&#x27;</span>
+            <span class="d2h-code-line-ctn">          preventFailureOnNoResponse: true</span>
         </div>
     </td>
 </tr><tr>
@@ -5711,7 +6616,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          method: POST</span>
+            <span class="d2h-code-line-ctn">          retry: 60</span>
         </div>
     </td>
 </tr><tr>
@@ -5721,7 +6626,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          bearerToken: &#x27;${{ secrets.SIGNPATH_API_TOKEN }}&#x27;</span>
+            <span class="d2h-code-line-ctn">          retryWait: 10000</span>
         </div>
     </td>
 </tr><tr>
@@ -5731,7 +6636,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          contentType: application&#x2F;json</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5741,7 +6646,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          data: &#x27;{}&#x27;</span>
+            <span class="d2h-code-line-ctn">      - name: Download signed China installer</span>
         </div>
     </td>
 </tr><tr>
@@ -5751,7 +6656,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          preventFailureOnNoResponse: true</span>
+            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5761,7 +6666,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          retry: 60</span>
+            <span class="d2h-code-line-ctn">        shell: pwsh</span>
         </div>
     </td>
 </tr><tr>
@@ -5771,7 +6676,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          retryWait: 10000</span>
+            <span class="d2h-code-line-ctn">        env:</span>
         </div>
     </td>
 </tr><tr>
@@ -5781,7 +6686,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">          SIGNING_REQUEST_ID: ${{ steps.sign_china_installer.outputs.signing-request-id }}</span>
         </div>
     </td>
 </tr><tr>
@@ -5791,7 +6696,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">      - name: Download signed China installer</span>
+            <span class="d2h-code-line-ctn">          SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}</span>
         </div>
     </td>
 </tr><tr>
@@ -5801,7 +6706,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        if: env.BUILD_EXE == &#x27;true&#x27; &amp;&amp; env.SIGN_BUILD == &#x27;true&#x27;</span>
+            <span class="d2h-code-line-ctn">        run: |</span>
         </div>
     </td>
 </tr><tr>
@@ -5811,7 +6716,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        shell: pwsh</span>
+            <span class="d2h-code-line-ctn">          $baseUrl = &quot;https:&#x2F;&#x2F;app.signpath.io&#x2F;API&#x2F;v1&#x2F;639bc6dd-9623-43cd-ac75-50a445898012&#x2F;SigningRequests&#x2F;$env:SIGNING_REQUEST_ID&quot;</span>
         </div>
     </td>
 </tr><tr>
@@ -5821,7 +6726,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        env:</span>
+            <span class="d2h-code-line-ctn">          $headers = @{ Authorization = &quot;Bearer $env:SIGNPATH_API_TOKEN&quot; }</span>
         </div>
     </td>
 </tr><tr>
@@ -5831,7 +6736,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          SIGNING_REQUEST_ID: ${{ steps.sign_china_installer.outputs.signing-request-id }}</span>
+            <span class="d2h-code-line-ctn">          $deadline = (Get-Date).AddSeconds(60000)</span>
         </div>
     </td>
 </tr><tr>
@@ -5841,7 +6746,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5851,7 +6756,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">        run: |</span>
+            <span class="d2h-code-line-ctn">          do {</span>
         </div>
     </td>
 </tr><tr>
@@ -5861,7 +6766,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          $baseUrl = &quot;https:&#x2F;&#x2F;app.signpath.io&#x2F;API&#x2F;v1&#x2F;639bc6dd-9623-43cd-ac75-50a445898012&#x2F;SigningRequests&#x2F;$env:SIGNING_REQUEST_ID&quot;</span>
+            <span class="d2h-code-line-ctn">            $status = Invoke-RestMethod -Uri &quot;$baseUrl&#x2F;Status&quot; -Headers $headers</span>
         </div>
     </td>
 </tr><tr>
@@ -5871,7 +6776,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          $headers = @{ Authorization = &quot;Bearer $env:SIGNPATH_API_TOKEN&quot; }</span>
+            <span class="d2h-code-line-ctn">            Write-Host &quot;SignPath status: $($status.status) ($($status.workflowStatus))&quot;</span>
         </div>
     </td>
 </tr><tr>
@@ -5881,7 +6786,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          $deadline = (Get-Date).AddSeconds(60000)</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5891,7 +6796,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">            if ($status.status -eq &#x27;Completed&#x27;) {</span>
         </div>
     </td>
 </tr><tr>
@@ -5901,7 +6806,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          do {</span>
+            <span class="d2h-code-line-ctn">              break</span>
         </div>
     </td>
 </tr><tr>
@@ -5911,7 +6816,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            $status = Invoke-RestMethod -Uri &quot;$baseUrl&#x2F;Status&quot; -Headers $headers</span>
+            <span class="d2h-code-line-ctn">            }</span>
         </div>
     </td>
 </tr><tr>
@@ -5921,7 +6826,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            Write-Host &quot;SignPath status: $($status.status) ($($status.workflowStatus))&quot;</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5931,7 +6836,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">            if ($status.isFinalStatus) {</span>
         </div>
     </td>
 </tr><tr>
@@ -5941,7 +6846,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            if ($status.status -eq &#x27;Completed&#x27;) {</span>
+            <span class="d2h-code-line-ctn">              throw &quot;SignPath request ended with status &#x27;$($status.status)&#x27; ($($status.workflowStatus)).&quot;</span>
         </div>
     </td>
 </tr><tr>
@@ -5951,7 +6856,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              break</span>
+            <span class="d2h-code-line-ctn">            }</span>
         </div>
     </td>
 </tr><tr>
@@ -5961,7 +6866,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            }</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -5971,7 +6876,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">            if ((Get-Date) -ge $deadline) {</span>
         </div>
     </td>
 </tr><tr>
@@ -5981,7 +6886,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            if ($status.isFinalStatus) {</span>
+            <span class="d2h-code-line-ctn">              throw &#x27;Timed out waiting for SignPath to sign the China installer.&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -5991,7 +6896,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              throw &quot;SignPath request ended with status &#x27;$($status.status)&#x27; ($($status.workflowStatus)).&quot;</span>
+            <span class="d2h-code-line-ctn">            }</span>
         </div>
     </td>
 </tr><tr>
@@ -6001,7 +6906,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            }</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -6011,7 +6916,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">            Start-Sleep -Seconds 10</span>
         </div>
     </td>
 </tr><tr>
@@ -6021,7 +6926,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            if ((Get-Date) -ge $deadline) {</span>
+            <span class="d2h-code-line-ctn">          } while ($true)</span>
         </div>
     </td>
 </tr><tr>
@@ -6031,7 +6936,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              throw &#x27;Timed out waiting for SignPath to sign the China installer.&#x27;</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
@@ -6041,7 +6946,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            }</span>
+            <span class="d2h-code-line-ctn">          $archivePath = Join-Path $env:RUNNER_TEMP &#x27;signed-china-installer.zip&#x27;</span>
         </div>
     </td>
 </tr><tr>
@@ -6051,7 +6956,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
+            <span class="d2h-code-line-ctn">          $outputDirectory = [System.IO.Path]::GetFullPath(&#x27;pyappify_dist&#x27;)</span>
         </div>
     </td>
 </tr><tr>
@@ -6061,7 +6966,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            Start-Sleep -Seconds 10</span>
+            <span class="d2h-code-line-ctn">          New-Item -ItemType Directory -Path $outputDirectory -Force | Out-Null</span>
         </div>
     </td>
 </tr><tr>
@@ -6071,7 +6976,7 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          } while ($true)</span>
+            <span class="d2h-code-line-ctn">          Invoke-WebRequest -Uri &quot;$baseUrl&#x2F;SignedArtifact&quot; -Headers $headers -OutFile $archivePath</span>
         </div>
     </td>
 </tr><tr>
@@ -6081,62 +6986,12 @@
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn"><br></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      380
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          $archivePath = Join-Path $env:RUNNER_TEMP &#x27;signed-china-installer.zip&#x27;</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      381
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          $outputDirectory = [System.IO.Path]::GetFullPath(&#x27;pyappify_dist&#x27;)</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      382
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          New-Item -ItemType Directory -Path $outputDirectory -Force | Out-Null</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      383
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">          Invoke-WebRequest -Uri &quot;$baseUrl&#x2F;SignedArtifact&quot; -Headers $headers -OutFile $archivePath</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      384
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
             <span class="d2h-code-line-ctn">          Expand-Archive -LiteralPath $archivePath -DestinationPath $outputDirectory -Force</span>
         </div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      385
+      380
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -6146,7 +7001,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      386
+      381
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -6156,7 +7011,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      387
+      382
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -6166,7 +7021,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      388
+      383
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -6176,7 +7031,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      389
+      384
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -6186,7 +7041,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      390
+      385
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -6196,12 +7051,127 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      391
+      386
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">&nbsp;</span>
             <span class="d2h-code-line-ctn">          path: pyappify_dist&#x2F;*</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-info"></td>
+    <td class="d2h-info">
+        <div class="d2h-code-side-line">&nbsp;</div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      399
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          name: release-assets</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      400
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">          path: pyappify_dist</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      401
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      402
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">      - name: Get app version</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      403
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        id: app_version</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      404
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        shell: bash</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      405
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn">        run: echo &quot;version=${GITHUB_REF_NAME#v}&quot; &gt;&gt; &quot;$GITHUB_OUTPUT&quot;</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-ins">
+      406
+    </td>
+    <td class="d2h-ins">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">+</span>
+            <span class="d2h-code-line-ctn"><br></span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      407
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">      - name: Create GitHub release</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      408
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        uses: softprops&#x2F;action-gh-release@v2</span>
+        </div>
+    </td>
+</tr><tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">
+      409
+    </td>
+    <td class="d2h-cntx">
+        <div class="d2h-code-side-line">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn">        env:</span>
         </div>
     </td>
 </tr><tr>
@@ -6246,7 +7216,7 @@
     <td class="d2h-ins d2h-change">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            ### 下载<ins>包</ins>说明</span>
+            <span class="d2h-code-line-ctn">            ### <ins>Install from source</ins></span>
         </div>
     </td>
 </tr><tr>
@@ -6256,72 +7226,22 @@
     <td class="d2h-ins d2h-change">
         <div class="d2h-code-side-line">
             <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              * <ins>[</ins>ok-ww-win32-<ins>China</ins>-setup.exe<ins>](https:&#x2F;&#x2F;github.com&#x2F;ok-oldking&#x2F;ok-wuthering-waves&#x2F;releases&#x2F;download&#x2F;${{</ins> <ins>github.ref_name</ins> <ins>}}&#x2F;ok-ww-win32-China-setup.exe)</ins> <ins>完整安装包</ins>, <ins>更新使用阿里云+腾讯CNB</ins>.</span>
+            <span class="d2h-code-line-ctn">              <ins>See</ins> <ins>the [source installation guide](https:&#x2F;&#x2F;github.com&#x2F;</ins>ok-<ins>oldking&#x2F;ok</ins>-<ins>wuthering</ins>-<ins>waves&#x2F;blob&#x2F;master&#x2F;docs&#x2F;development&#x2F;contributing</ins>.<ins>md)</ins>.</span>
         </div>
     </td>
 </tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins d2h-change">
-      417
+    <td class="d2h-code-side-linenumber d2h-code-side-emptyplaceholder d2h-cntx d2h-emptyplaceholder">
+      
     </td>
-    <td class="d2h-ins d2h-change">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              * <ins>[</ins>ok-ww-win32<ins>-Global-setup</ins>.<ins>exe](https:&#x2F;&#x2F;github.com&#x2F;ok-oldking&#x2F;ok-wuthering-waves&#x2F;releases&#x2F;download&#x2F;${{</ins> <ins>github</ins>.<ins>ref_name</ins> <ins>}}&#x2F;</ins>ok-ww-win32<ins>-Global-setup</ins>.<ins>exe)</ins> <ins>full package with dependencies, using GitHub </ins>and <ins>PyPi</ins> <ins>as update source</ins></span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      418
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              * 不要下载ok-ww-win32.zip,和SourceCode.zip, Do Not Download the SourceCode, ok-ww-win32.zip</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      419
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">            ### 如果无法下载或下载慢, 可以使用其他下载源</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      420
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              * [Mirror酱下载渠道](https:&#x2F;&#x2F;mirrorchyan.com&#x2F;zh&#x2F;projects?rid=okww&amp;source=ok-ww-release), 国内网页直链, 下载需要购买CD-KEY, 已有Mirror酱CD-KEY可免费下载</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      421
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              * [百度网盘](https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;102Mh1djq2B1T-cIJhct9Gg?pwd=okww) 免费下载</span>
-        </div>
-    </td>
-</tr><tr>
-    <td class="d2h-code-side-linenumber d2h-ins">
-      422
-    </td>
-    <td class="d2h-ins">
-        <div class="d2h-code-side-line">
-            <span class="d2h-code-line-prefix">+</span>
-            <span class="d2h-code-line-ctn">              * [夸克网盘](https:&#x2F;&#x2F;pan.quark.cn&#x2F;s&#x2F;24433f3febc1) 免费下载</span>
+    <td class="d2h-cntx d2h-emptyplaceholder">
+        <div class="d2h-code-side-line d2h-code-side-emptyplaceholder">
+            <span class="d2h-code-line-prefix">&nbsp;</span>
+            <span class="d2h-code-line-ctn"><br></span>
         </div>
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      423
+      417
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -6331,7 +7251,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins d2h-change">
-      424
+      418
     </td>
     <td class="d2h-ins d2h-change">
         <div class="d2h-code-side-line">
@@ -6351,7 +7271,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-cntx">
-      425
+      419
     </td>
     <td class="d2h-cntx">
         <div class="d2h-code-side-line">
@@ -6361,7 +7281,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      426
+      420
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -6371,7 +7291,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      427
+      421
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -6381,7 +7301,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      428
+      422
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -6391,7 +7311,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      429
+      423
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -6401,7 +7321,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      430
+      424
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -6411,7 +7331,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      431
+      425
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -6421,7 +7341,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      432
+      426
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -6431,7 +7351,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      433
+      427
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
@@ -6441,7 +7361,7 @@
     </td>
 </tr><tr>
     <td class="d2h-code-side-linenumber d2h-ins">
-      434
+      428
     </td>
     <td class="d2h-ins">
         <div class="d2h-code-side-line">
